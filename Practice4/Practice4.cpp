@@ -22,6 +22,8 @@ string ConversionBetweenNumberSystems(string number, int old_base,
                                       int new_base);
 string ConversionTo10NumberSystem(string number, int old_base,
                                   map<char, int> SymbolsOfNumbersSystemsToDec);
+int GetVendor(double C[3][3], int row, bool option);
+int RomanToDec(string roman_number);
 
 string CreateFile() {
   cout << "What do you want to name the text file?\n";
@@ -278,7 +280,7 @@ int RomanToDec(string roman_number) {
               dec_number += 90;
             roman_number[i] = '1';
           }
-        } else if ((i != 0 and roman_number[i - 1] == '1' or i == 0) and
+        } else if ((i != 0 and roman_number[i - 1] != '1' or i == 0) and
                    ((i != roman_number.size() - 1 and
                      (roman_number[i + 1] == 'X' or
                       roman_number[i + 1] == 'V' or
@@ -308,7 +310,7 @@ int RomanToDec(string roman_number) {
               dec_number += 900;
             roman_number[i] = '1';
           }
-        } else if ((i != 0 and roman_number[i - 1] == '1' or i == 0) and
+        } else if ((i != 0 and roman_number[i - 1] != '1' or i == 0) and
                    ((i != roman_number.size() - 1 and
                      (roman_number[i + 1] != 'C' and
                       roman_number[i + 1] != 'D' and
