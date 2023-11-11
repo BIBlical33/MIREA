@@ -223,6 +223,7 @@ void Task6() {
     cout << "Dec translation of this number is " << answer << endl;
   else
     cout << "It isn't roman number!\n";
+  return;
 }
 
 int RomanToDec(string roman_number) {
@@ -240,7 +241,6 @@ int RomanToDec(string roman_number) {
       return -1;
     }
   }
-
   const char kCombinationSymbol = '1';
   int dec_number = 0;
   for (int i = 0; i < roman_number.size(); i++) {
