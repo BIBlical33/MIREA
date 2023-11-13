@@ -268,19 +268,12 @@ int* InitializingArray(ifstream& fout, int* array, int starting_index) {
   }
 }
 
+// AI automaticly-generated functions
 void swap(int* a, int* b) {
   int temp = *a;
   *a = *b;
   *b = temp;
 }
-
-// void swap(string** a, string** b) {
-//   cout << a << ' ' << b << endl;
-//   string temp = **a;
-//   **a = *b;
-//   *b = temp;
-//   cout << a << ' ' << b << endl;
-// }
 
 int partition(int arr[], int low, int high) {
   int pivot = arr[high];  // выбираем последний элемент в качестве опорного
@@ -307,6 +300,7 @@ void quickSort(int arr[], int low, int high) {
     quickSort(arr, pi + 1, high);
   }
 }
+// Ending AI auto-generated functions
 
 void DrawingTableInFile(ofstream& fout, string** array, const int kRowsCount,
                         const int kColumnsCount) {
@@ -330,6 +324,11 @@ void DrawingTableInFile(ofstream& fout, string** array, const int kRowsCount,
   } else {
     cout << "Program cannot open this txt file\n";
   }
+}
+
+void ReverseArray(int arr[], int starting_element, int ending_element) {
+  for (int i = starting_element; i < ending_element % 2; i++)
+    swap(arr[i], arr[ending_element - i]);
 }
 
 void Task5() {
@@ -372,12 +371,10 @@ void Task5() {
       string** olympic_results;
       const int kRowsCount = 11;  // First row'll be skiped
       const int kColumnsCount = 7;
-      olympic_results = new string*[kRowsCount];  // Array without empty lines
-      int** olympic_results_by_golden_and_silver_medals;
-      olympic_results_by_golden_and_silver_medals = new int*[kRowsCount];
+      olympic_results = new string*[kRowsCount];
+      int* olympic_results_by_golden_and_silver_medals = new int[kRowsCount];
       for (int i = 1; i < kRowsCount; i++) {
         olympic_results[i] = new string[kColumnsCount];
-        olympic_results_by_golden_and_silver_medals[i] = new int[2];
         olympic_results[i][0] = to_string(i);
         switch (i) {
           case 1:
@@ -433,8 +430,7 @@ void Task5() {
         olympic_results[i][6] = to_string(stoi(olympic_results[i][2]) * 7 +
                                           stoi(olympic_results[i][3]) * 6 +
                                           stoi(olympic_results[i][4]) * 5);
-        olympic_results_by_golden_and_silver_medals[i][0] = i;
-        olympic_results_by_golden_and_silver_medals[i][1] =
+        olympic_results_by_golden_and_silver_medals[i] =
             golden_and_silver_medals_count;
       }
       fstream clear_file("olympic_games.txt", ios::out);
@@ -444,32 +440,43 @@ void Task5() {
       fin.close();
       clear_file.open("olympic_games.txt");
       clear_file.close();
-      int* sorted_olympic_results = new int[kRowsCount];
-      for (int i = 1; i < kRowsCount; i++) {
-        sorted_olympic_results[i] =
-            olympic_results_by_golden_and_silver_medals[i][1];
-      }
-      quickSort(sorted_olympic_results, 1, kRowsCount - 1);
-      for (int i = kRowsCount - 1; i > 1; i--)
-        for (int z = 1; z < kRowsCount; z++)
-          if (sorted_olympic_results[i] ==
-              olympic_results_by_golden_and_silver_medals[z][1]) {
-            for (int j = 0; j < kColumnsCount; j++) {
-              swap(olympic_results
-                       [olympic_results_by_golden_and_silver_medals[z][0]][j],
-                   olympic_results[kRowsCount - i][j]);
-              olympic_results_by_golden_and_silver_medals[z][1] = -1;
-              olympic_results_by_golden_and_silver_medals[kRowsCount - i][0] =
-                  olympic_results_by_golden_and_silver_medals[z][0];
-            }
-            break;
-          }
+      quickSort(olympic_results_by_golden_and_silver_medals, 1, kRowsCount - 1);
+      ReverseArray(olympic_results_by_golden_and_silver_medals, 1,
+                   kRowsCount - 1);
       fin.open("olympic_games.txt");
-      DrawingTableInFile(fin, olympic_results, kRowsCount, kColumnsCount);
-      fin.close();
+      if (fin.is_open()) {
+        string horizontal_line(83, '-');
+        horizontal_line = "|" + horizontal_line + "|";
+        fin << horizontal_line << "\r\n"
+            << "|           |Country    |Golden     |Silver     |Bronze     "
+               "|Total      |Score      |"
+            << "\r\n"
+            << horizontal_line << "\r\n";
+        for (int i = 1; i < kRowsCount; i++) {
+          fin << '|';
+          for (int z = 1; z < kRowsCount; z++) {
+            if (olympic_results_by_golden_and_silver_medals[i] ==
+                stoi(olympic_results[z][2]) + stoi(olympic_results[z][3])) {
+              for (int j = 0; j < kColumnsCount; j++) {
+                fin << olympic_results[z][j];
+                for (int k = 0; k < 11 - olympic_results[z][j].size(); k++)
+                  fin << ' ';
+                fin << '|';
+              }
+              fin << "\r\n" << horizontal_line << "\r\n";
+              olympic_results[z][2] = "-1";
+              olympic_results[z][3] = "-1";
+              break;
+            }
+          }
+        }
+        fin.close();
+      } else {
+        cout << "Program cannot open this txt file\n";
+      }
       ifstream fout("olympic_games.txt");
+      string file_content;
       if (fout.is_open()) {
-        string file_content;
         while (getline(fout, file_content)) cout << file_content << endl;
         fout.close();
       } else {
