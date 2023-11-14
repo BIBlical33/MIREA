@@ -235,6 +235,7 @@ void Task4() {
         z *= a[i];
     }
     cout << "Q = " << x * x + y * y + z * z << endl;
+    delete[] a;
   } else {
     cout << "Incorrect task number\n";
   }
@@ -482,6 +483,9 @@ void Task5() {
       } else {
         cout << "Program cannot open this txt file\n";
       }
+      delete[] olympic_results_by_golden_and_silver_medals;
+      for (int i = 0; i < kRowsCount; i++) delete[] olympic_results[i];
+      delete[] olympic_results;
     } break;
     default:
       break;
