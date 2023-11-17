@@ -335,7 +335,7 @@ void ReverseArray(int arr[], int starting_element, int ending_element) {
 void Task5() {
   cout << "Enter task number: '9' or '23'\n";
   int task_number;
-  cin >> task_number;
+  task_number = IntegerInput();
   switch (task_number) {
     case 9: {
       const int kFileCount = 2;
@@ -488,16 +488,18 @@ void Task5() {
       delete[] olympic_results;
     } break;
     default:
+      cout << "Incorrect task number\n";
       break;
   }
 }
 
 int main() {
   cout << "Greetings. The program was written by Ilya Kramarenko, "
-          "IVBO-10-23. Enter task number separate digit or '0' for exit\n";
+          "IVBO-10-23.\n";
   int command = 1;
   while (command != 0) {
-    cin >> command;
+    cout << "Enter task number separate digit or '0' for exit\n";
+    command = IntegerInput();
     if (command == 1)
       Task1();
     else if (command == 2)
