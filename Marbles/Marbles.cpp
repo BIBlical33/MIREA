@@ -30,7 +30,7 @@ int main() {
   cout << "Enter amount of marbles (positive int required)\n";
   int marbles_size = IntegerInput();
   marbles_size++;
-  if (marbles_size < 1) {
+  if (marbles_size < 2) {
     cout << marbles_size << "Incorrect data entered\n";
     return 0;
   }
