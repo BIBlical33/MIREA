@@ -373,6 +373,7 @@ void Task5() {
       const int kRowsCount = 11;  // First row'll be skiped
       const int kColumnsCount = 7;
       olympic_results = new string*[kRowsCount];
+      olympic_results[0] = 0;
       int* olympic_results_by_golden_and_silver_medals = new int[kRowsCount];
       for (int i = 1; i < kRowsCount; i++) {
         olympic_results[i] = new string[kColumnsCount];
