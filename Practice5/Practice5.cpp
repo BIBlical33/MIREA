@@ -136,7 +136,7 @@ void Task3() {
         string file_content, number = "";
         while (getline(fout, file_content))
           for (int i = 0; i < file_content.size(); i++)
-            cout << (int)file_content[i] << endl;
+            cout << static_cast<int>(file_content[i]) << endl;
       } else {
         cout << "Program cannot open this txt file\n";
       }
@@ -151,7 +151,7 @@ void Task3() {
         string file_content, number = "";
         while (getline(fout, file_content)) {
           for (int i = 0; i < file_content.size(); i++)
-            file_content[i] = (int)file_content[i] + cipher_shift;
+            file_content[i] = static_cast<int>(file_content[i]) + cipher_shift;
           cout << file_content << endl;
         }
       } else {

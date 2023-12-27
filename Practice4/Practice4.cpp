@@ -195,15 +195,15 @@ void Task5() {
         cout << "-> X";
       } else if (y == 0) {
         cout << '-';
-      } else if (y == -1 * kStep and x > 0 and x == (int)x) {
+      } else if (y == -1 * kStep and x > 0 and x == static_cast<int>(x)) {
         cout << x;
       } else if (y == -1 * kStep and x < 0 and
-                 (x + kStep) == (int)(x + kStep)) {
+                 (x + kStep) == static_cast<int>((x + kStep))) {
         cout << x + kStep;
         x += kStep;
-      } else if (x == -1 * kStep and y > 0 and y == (int)y) {
+      } else if (x == -1 * kStep and y > 0 and y == static_cast<int>(y)) {
         cout << y;
-      } else if (x == -2 * kStep and y < 0 and y == (int)y) {
+      } else if (x == -2 * kStep and y < 0 and y == static_cast<int>(y)) {
         cout << y;
         x += kStep;
       } else {
