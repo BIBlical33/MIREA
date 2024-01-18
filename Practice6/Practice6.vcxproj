@@ -127,7 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Practice6.cpp" />
+    <ClCompile Include="practice6.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="practice6.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

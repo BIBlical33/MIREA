@@ -1,29 +1,4 @@
-﻿#define _USE_MATH_DEFINES
-#include <Windows.h>
-
-#include <algorithm>
-#include <cmath>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <map>
-#include <string>
-#include <vector>
-
-using namespace std;
-
-string CreateFile();
-bool CustomIsDidgit(char symbol);
-int sign(double x);
-void TriangleAreaCalculation();
-void RectangleAreaCalculation();
-void CircleAreaCalculation();
-string ConversionBetweenNumberSystems(string number, int old_base,
-                                      int new_base);
-string ConversionTo10NumberSystem(string number, int old_base,
-                                  map<char, int> SymbolsOfNumbersSystemsToDec);
-int GetVendor(double C[3][3], int row, bool option);
-int RomanToDec(string roman_number);
+﻿#include "practice4.h"
 
 string CreateFile() {
   cout << "What do you want to name the text file?\n";
@@ -43,6 +18,13 @@ string CreateFile() {
     cout << "Program cannot open this txt file\n";
   }
   return filename + ".txt";
+}
+
+bool CustomIsDidgit(char symbol) {
+  const int kNill_ASCII_code = 48;
+  if (symbol >= kNill_ASCII_code and symbol <= kNill_ASCII_code + 9)
+    return true;
+  return false;
 }
 
 void Task1() {
@@ -76,14 +58,7 @@ void Task1() {
   }
 }
 
-bool CustomIsDidgit(char symbol) {
-  const int kNill_ASCII_code = 48;
-  if (symbol >= kNill_ASCII_code and symbol <= kNill_ASCII_code + 9)
-    return true;
-  return false;
-}
-
-int sign(double x) {
+int Sign(double x) {
   if (x > 0) return 1;
   if (x == 0) return 0;
   return -1;
@@ -93,28 +68,7 @@ void Task2() {
   double number;
   cout << "Enter x" << endl;
   cin >> number;
-  cout << sign(number) << endl;
-}
-
-void Task3() {
-  cout << "What type of figure do u need? For:\nrectangle, enter "
-          "'1'\ntriangle, enter '2'\ncircle, enter '3'\n";
-  int figure_type;
-  cin >> figure_type;
-  switch (figure_type) {
-    case 1:
-      RectangleAreaCalculation();
-      break;
-    case 2:
-      TriangleAreaCalculation();
-      break;
-    case 3:
-      CircleAreaCalculation();
-      break;
-    default:
-      cout << "Worng type\n";
-      break;
-  }
+  cout << Sign(number) << endl;
 }
 
 void RectangleAreaCalculation() {
@@ -154,6 +108,27 @@ void CircleAreaCalculation() {
     cout << "S = " << M_PI * r * r << endl;
   else
     cout << "It isn't a circle\n";
+}
+
+void Task3() {
+  cout << "What type of figure do u need? For:\nrectangle, enter "
+          "'1'\ntriangle, enter '2'\ncircle, enter '3'\n";
+  int figure_type;
+  cin >> figure_type;
+  switch (figure_type) {
+    case 1:
+      RectangleAreaCalculation();
+      break;
+    case 2:
+      TriangleAreaCalculation();
+      break;
+    case 3:
+      CircleAreaCalculation();
+      break;
+    default:
+      cout << "Worng type\n";
+      break;
+  }
 }
 
 void Task4() {
@@ -212,18 +187,6 @@ void Task5() {
     }
     cout << endl;
   }
-}
-
-void Task6() {
-  cout << "Enter roman number\n";
-  string roman_number;
-  cin >> roman_number;
-  int answer = RomanToDec(roman_number);
-  if (answer != -1)
-    cout << "Dec translation of this number is " << answer << endl;
-  else
-    cout << "It isn't roman number!\n";
-  return;
 }
 
 int RomanToDec(string roman_number) {
@@ -340,6 +303,17 @@ int RomanToDec(string roman_number) {
     }
   }
   return dec_number;
+}
+void Task6() {
+  cout << "Enter roman number\n";
+  string roman_number;
+  cin >> roman_number;
+  int answer = RomanToDec(roman_number);
+  if (answer != -1)
+    cout << "Dec translation of this number is " << answer << endl;
+  else
+    cout << "It isn't roman number!\n";
+  return;
 }
 
 void Task7() {

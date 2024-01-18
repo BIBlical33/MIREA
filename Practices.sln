@@ -7,11 +7,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Practice4", "Practice4\Prac
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Practice5", "Practice5\Practice5.vcxproj", "{7DAE820D-7570-4970-A9F5-5891620D4C10}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Practice3", "Practice3\Practice3.vcxproj", "{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Marbles", "Marbles\Marbles.vcxproj", "{8B8E506A-C079-4F0E-A75A-AC0F869E3990}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Practice6", "Practice6\Practice6.vcxproj", "{B5BB60A4-6BAF-4B0C-8FC5-7AEF2BB1F10D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{D529DAE3-6194-4EC7-B186-D4A94FA1F688}"
+	ProjectSection(SolutionItems) = preProject
+		mirea.h = mirea.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +40,6 @@ Global
 		{7DAE820D-7570-4970-A9F5-5891620D4C10}.Release|x64.Build.0 = Release|x64
 		{7DAE820D-7570-4970-A9F5-5891620D4C10}.Release|x86.ActiveCfg = Release|Win32
 		{7DAE820D-7570-4970-A9F5-5891620D4C10}.Release|x86.Build.0 = Release|Win32
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Debug|x64.ActiveCfg = Debug|x64
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Debug|x64.Build.0 = Debug|x64
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Debug|x86.ActiveCfg = Debug|Win32
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Debug|x86.Build.0 = Debug|Win32
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Release|x64.ActiveCfg = Release|x64
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Release|x64.Build.0 = Release|x64
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Release|x86.ActiveCfg = Release|Win32
-		{6F7D57F9-6C49-4C89-BFB3-4DBB767627C7}.Release|x86.Build.0 = Release|Win32
 		{8B8E506A-C079-4F0E-A75A-AC0F869E3990}.Debug|x64.ActiveCfg = Debug|x64
 		{8B8E506A-C079-4F0E-A75A-AC0F869E3990}.Debug|x64.Build.0 = Debug|x64
 		{8B8E506A-C079-4F0E-A75A-AC0F869E3990}.Debug|x86.ActiveCfg = Debug|Win32

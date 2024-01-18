@@ -1,33 +1,4 @@
-﻿#include <algorithm>
-#include <cmath>
-#include <fstream>
-#include <iostream>
-#include <limits>
-#include <string>
-
-using namespace std;
-
-double DoubleInput() {
-  string str_number;
-  cin >> str_number;
-  double number;
-  try {
-    number = stod(str_number);
-  } catch (invalid_argument) {
-    return INT_MIN;
-  } catch (out_of_range) {
-    return INT_MIN;
-  }
-  return number;
-}
-
-int IntegerInput() {
-  double number = DoubleInput();
-  if (number == int(number)) {
-    return int(number);
-  }
-  return INT_MIN;
-}
+﻿#include "practice5.h"
 
 string CreateFile() {
   cout << "What do you want to name the text file?\n";
