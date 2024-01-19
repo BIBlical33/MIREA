@@ -1,11 +1,12 @@
 #ifndef MIREA_H_
 #define MIREA_H_
-
 #include <algorithm>
 #include <iostream>
 #include <string>
 
 using namespace std;
+
+const int kIncorrectUserData = INT_MIN;
 
 double DoubleInput() {
   string str_number;
@@ -14,9 +15,9 @@ double DoubleInput() {
   try {
     number = stod(str_number);
   } catch (invalid_argument) {
-    return INT_MIN;
+    return kIncorrectUserData;
   } catch (out_of_range) {
-    return INT_MIN;
+    return kIncorrectUserData;
   }
   return number;
 }
@@ -26,7 +27,6 @@ int IntegerInput() {
   if (number == int(number)) {
     return int(number);
   }
-  return INT_MIN;
+  return kIncorrectUserData;
 }
-
 #endif  // !MIREA_H_

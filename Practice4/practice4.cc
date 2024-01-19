@@ -33,7 +33,7 @@ void Task1() {
     vector<double> numbers;
     string file_content, number = "";
     while (getline(fout, file_content)) {
-      // Разбиваем строку на числа и записываем их в вектор
+      // Split the string into numbers and push them into a vector
       for (int i = 0; i < file_content.size(); i++) {
         if (CustomIsDidgit(file_content[i]) or
             (file_content[i] == '-' and CustomIsDidgit(file_content[i + 1]) and
@@ -50,7 +50,6 @@ void Task1() {
     }
     double sum = 0;
     for (int i = 0; i < numbers.size(); i++) sum += numbers[i];
-
     cout << sum << endl;
     fout.close();
   } else {
@@ -65,16 +64,17 @@ int Sign(double x) {
 }
 
 void Task2() {
-  double number;
   cout << "Enter x" << endl;
-  cin >> number;
-  cout << Sign(number) << endl;
+  double number = DoubleInput();
+  if (number == kIncorrectUserData)
+    cout << "Incorrect data entered\n";
+  else
+    cout << Sign(number) << endl;
 }
 
 void RectangleAreaCalculation() {
   cout << "Enter length and width of rectangle\n";
-  double rectangle_width, rectangle_length;
-  cin >> rectangle_length >> rectangle_width;
+  double rectangle_width = DoubleInput(), rectangle_length = DoubleInput();
   if (rectangle_length > 0 and rectangle_width > 0)
     cout << "S = " << rectangle_length * rectangle_width << endl;
   else
@@ -83,10 +83,12 @@ void RectangleAreaCalculation() {
 
 void TriangleAreaCalculation() {
   cout << "Enter three sides of triangle\n";
-  double triangle_first_side, triangle_second_side, triangle_third_side;
-  cin >> triangle_first_side >> triangle_second_side >> triangle_third_side;
-  double p =
-      (triangle_first_side + triangle_second_side + triangle_third_side) / 2.0;
+  double triangle_first_side = DoubleInput(),
+         triangle_second_side = DoubleInput(),
+         triangle_third_side = DoubleInput(),
+         p = (triangle_first_side + triangle_second_side +
+              triangle_third_side) /
+             2.0;
   if (triangle_first_side > 0 and triangle_second_side > 0 and
       triangle_third_side > 0 and
       triangle_first_side + triangle_second_side > triangle_third_side and
@@ -102,8 +104,7 @@ void TriangleAreaCalculation() {
 
 void CircleAreaCalculation() {
   cout << "Enter radius of circle\n";
-  double r;
-  cin >> r;
+  double r = DoubleInput();
   if (r > 0)
     cout << "S = " << M_PI * r * r << endl;
   else
@@ -113,8 +114,7 @@ void CircleAreaCalculation() {
 void Task3() {
   cout << "What type of figure do u need? For:\nrectangle, enter "
           "'1'\ntriangle, enter '2'\ncircle, enter '3'\n";
-  int figure_type;
-  cin >> figure_type;
+  int figure_type = IntegerInput();
   switch (figure_type) {
     case 1:
       RectangleAreaCalculation();
@@ -151,7 +151,7 @@ void Task4() {
 
 void Task5() {
   cout << "y = sin(x)\n\n";
-  // Отлажено только для |x|<10 и |y|<10
+  // Debugged for |x|<10 and |y|<10 only
   const double kYAxisBeginning = 1.2, kYAxisEnd = -1.2, kXAxisBeginning = -6.0,
                kXAxisEnd = 9.0, kStep = 0.1, kPrecision = 0.05;
   string auxiliary_line(abs(kXAxisBeginning / kStep) - 2.0, ' ');
@@ -190,7 +190,7 @@ void Task5() {
 }
 
 int RomanToDec(string roman_number) {
-  // Проверяем на количество символов
+  // Check for 3 consecutive characters
   char extra_char = ' ';
   int count_of_similar_symbols_in_row = 0;
   for (int i = 0; i < roman_number.size(); i++) {
@@ -204,6 +204,7 @@ int RomanToDec(string roman_number) {
       return -1;
     }
   }
+
   const char kCombinationSymbol = '1';
   int dec_number = 0;
   for (int i = 0; i < roman_number.size(); i++) {
@@ -217,7 +218,7 @@ int RomanToDec(string roman_number) {
             roman_number[i] = kCombinationSymbol;
             dec_number += 9;
           } else if (roman_number[i + 1] != 'I') {
-            return -1;
+            return kIncorrectUserData;
           } else {
             dec_number++;
           }
@@ -227,23 +228,24 @@ int RomanToDec(string roman_number) {
         break;
       case 'V':
         if (i != roman_number.size() - 1 and roman_number[i + 1] != 'I')
-          return -1;
-        else if (i != 0 and roman_number[i - 1] != '1' or i == 0)
+          return kIncorrectUserData;
+        else if (i != 0 and roman_number[i - 1] != kCombinationSymbol or i == 0)
           dec_number += 5;
         break;
       case 'X':
         if ((roman_number[i + 1] == 'L' or roman_number[i + 1] == 'C') and
             i != roman_number.size() - 1) {
-          if (i != 0 and roman_number[i - 1] == '1') {
-            return -1;
+          if (i != 0 and roman_number[i - 1] == kCombinationSymbol) {
+            return kIncorrectUserData;
           } else {
             if (roman_number[i + 1] == 'L')
               dec_number += 40;
             else
               dec_number += 90;
-            roman_number[i] = '1';
+            roman_number[i] = kCombinationSymbol;
           }
-        } else if ((i != 0 and roman_number[i - 1] != '1' or i == 0) and
+        } else if ((i != 0 and roman_number[i - 1] != kCombinationSymbol or
+                    i == 0) and
                    ((i != roman_number.size() - 1 and
                      (roman_number[i + 1] == 'X' or
                       roman_number[i + 1] == 'V' or
@@ -251,29 +253,30 @@ int RomanToDec(string roman_number) {
                     i == roman_number.size() - 1)) {
           dec_number += 10;
         } else {
-          return -1;
+          return kIncorrectUserData;
         }
         break;
       case 'L':
         if (i != roman_number.size() - 1 and roman_number[i + 1] != 'I' and
             roman_number[i + 1] != 'V' and roman_number[i + 1] != 'X')
-          return -1;
-        else if (i != 0 and roman_number[i - 1] != '1' or i == 0)
+          return kIncorrectUserData;
+        else if (i != 0 and roman_number[i - 1] != kCombinationSymbol or i == 0)
           dec_number += 50;
         break;
       case 'C':
         if ((roman_number[i + 1] == 'D' or roman_number[i + 1] == 'M') and
             i != roman_number.size() - 1) {
-          if (i != 0 and roman_number[i - 1] == '1') {
-            return -1;
+          if (i != 0 and roman_number[i - 1] == kCombinationSymbol) {
+            return kIncorrectUserData;
           } else {
             if (roman_number[i + 1] == 'D')
               dec_number += 400;
             else
               dec_number += 900;
-            roman_number[i] = '1';
+            roman_number[i] = kCombinationSymbol;
           }
-        } else if ((i != 0 and roman_number[i - 1] != '1' or i == 0) and
+        } else if ((i != 0 and roman_number[i - 1] != kCombinationSymbol or
+                    i == 0) and
                    ((i != roman_number.size() - 1 and
                      (roman_number[i + 1] != 'C' and
                       roman_number[i + 1] != 'D' and
@@ -281,25 +284,24 @@ int RomanToDec(string roman_number) {
                     i == roman_number.size() - 1)) {
           dec_number += 100;
         } else {
-          return -1;
+          return kIncorrectUserData;
         }
         break;
       case 'D':
         if (i != roman_number.size() - 1 and
             (roman_number[i + 1] == 'M' or roman_number[i + 1] != 'D'))
-          return -1;
-        else if (i != 0 and roman_number[i - 1] != '1' or i == 0)
+          return kIncorrectUserData;
+        else if (i != 0 and roman_number[i - 1] != kCombinationSymbol or i == 0)
           dec_number += 500;
         break;
       case 'M':
         if (i != roman_number.size() - 1 and roman_number[i + 1] == 'M')
-          return -1;
-        else if (i != 0 and roman_number[i - 1] != '1' or i == 0)
+          return kIncorrectUserData;
+        else if (i != 0 and roman_number[i - 1] != kCombinationSymbol or i == 0)
           dec_number += 1000;
         break;
       default:
-        return -1;
-        break;
+        return kIncorrectUserData;
     }
   }
   return dec_number;
@@ -309,7 +311,7 @@ void Task6() {
   string roman_number;
   cin >> roman_number;
   int answer = RomanToDec(roman_number);
-  if (answer != -1)
+  if (answer != kIncorrectUserData)
     cout << "Dec translation of this number is " << answer << endl;
   else
     cout << "It isn't roman number!\n";
@@ -318,8 +320,7 @@ void Task6() {
 
 void Task7() {
   cout << "Enter length of consistency (integer required)\n";
-  int consistency_length;
-  cin >> consistency_length;
+  int consistency_length = IntegerInput();
   vector<int> s;
   s.push_back(0);
   cout << "What variant of consistency do u need? (1 or 2 required)\n";
@@ -402,10 +403,11 @@ string ConversionBetweenNumberSystems(string number, int old_base,
   if (old_base < 2 or new_base < 2) return "It isn't correct number system";
   if (old_base > 36 or new_base > 36)
     return "The program support numbers of systems with base <= 36 only";
+
+  // Fill with values in 10 number system the symbols of number systems with
+  // base <= 36 and vice versa
   map<char, int> SymbolsOfNumbersSystemsToDec;
   map<int, char> SearchDigitsByValue;
-  // Заполняем значениями в 10сс символы систем счисления с основанием <= 36 и
-  // наоборот
   const int kNumberOfCharacters32NumberSystem = 36, kA_ASCII_Index = 65,
             k0_ASCII_Index = 48;
   int key = 0;
@@ -419,20 +421,19 @@ string ConversionBetweenNumberSystems(string number, int old_base,
     SearchDigitsByValue[key] = digit;
     SymbolsOfNumbersSystemsToDec[i] = key++;
   }
-  // Проверяем наличие несуществующих символов числа в заданной сс
+
+  // Check for non-existent number symbols in the given number system
   char symbol;
   for (int i = 0; i < number.size(); i++) {
     if (SymbolsOfNumbersSystemsToDec.count(number[i]) == 0 or
         SymbolsOfNumbersSystemsToDec[number[i]] >= old_base)
       return "Incorrect number\n";
   }
-  if (new_base == old_base or number == "0" or number == "1") return number;
-  if (new_base == 10)
-    return ConversionTo10NumberSystem(number, old_base,
-                                      SymbolsOfNumbersSystemsToDec);
-  // Переводим из 10 сс в new_base сс
+
+  // Convert to 10 number system and to new_base number system
   number = ConversionTo10NumberSystem(number, old_base,
                                       SymbolsOfNumbersSystemsToDec);
+  if (new_base == 10) return number;
   string conversion_number;
   int dec_number = stoi(number);
   while (dec_number > new_base - 1) {
@@ -448,21 +449,21 @@ void Task9() {
   cout << "Enter positive integer\n";
   string number;
   cin >> number;
-  cout << "Enter two positive integers: the original number system and the "
-          "new "
-          "number "
-          "system to convert\n";
-  int new_base, old_base;
-  cin >> old_base >> new_base;
+  cout << "Enter two positive integers in separate lines: the original number "
+          "system and the new "
+          "number system to convert\n";
+  int old_base = IntegerInput();
+  int new_base = IntegerInput();
   cout << ConversionBetweenNumberSystems(number, old_base, new_base) << endl;
 }
 
 int main() {
   cout << "Greetings. The program was written by Ilya Kramarenko, "
-          "IVBO-10-23. Enter task number separate digit\n";
+          "IVBO-10-23.\n";
   int command = 1;
   while (command != 0) {
-    cin >> command;
+    cout << "Enter task number separate digit or '0' for exit\n";
+    command = IntegerInput();
     if (command == 1)
       Task1();
     else if (command == 2)

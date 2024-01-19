@@ -46,14 +46,10 @@ int EuclideanAlgorithmBySubtraction(int first_number, int second_number) {
 
 void Task1() {
   cout << "Enter two positive integers\n";
-  int first_number, second_number;
-  try {
-    cin >> first_number >> second_number;
-    if (first_number <= 0 or second_number <= 0) {
-      cout << "Incorrect data entered\n";
-      return;
-    }
-  } catch (const char* error_message) {
+  int first_number = IntegerInput(), second_number = IntegerInput();
+  if (first_number < 1 or second_number < 1) {
+    cout << "Incorrect data entered\n";
+    return;
   }
   int greatest_common_divisor =
       EuclideanAlgorithmByDivision(first_number, second_number);
@@ -83,7 +79,11 @@ int* EratosthenesSieve(int i, int consistency_integers_size,
 void Task2() {
   int consistency_integers_ending;
   cout << "Enter positive integer value:\n";
-  cin >> consistency_integers_ending;
+  consistency_integers_ending = IntegerInput();
+  if (consistency_integers_ending < 0) {
+    cout << "Incorrect data entered\n";
+    return;
+  }
   int consistency_integers_size = consistency_integers_ending + 1;
   int* consistency_integers = new int[consistency_integers_size];
   for (int number = 0; number < consistency_integers_size; number++)
@@ -98,8 +98,7 @@ void Task2() {
 
 void Task3() {
   cout << "Enter task number: '9' or '32'\n";
-  int task_number = 0;
-  cin >> task_number;
+  int task_number = IntegerInput();
   switch (task_number) {
     case 9: {
       ifstream fout(CreateFile());
@@ -131,7 +130,6 @@ void Task3() {
     } break;
     default:
       cout << "Incorrect task number\n";
-      break;
   }
 }
 
@@ -165,7 +163,7 @@ void Task4() {
   if (task_number == "9") {
     cout << "Enter 2 integers: x and epsilon\n";
     double x = DoubleInput(), epsilon = DoubleInput();
-    if (x == INT_MIN or epsilon == INT_MIN) {
+    if (x == kIncorrectUserData or epsilon == kIncorrectUserData) {
       cout << "Incorrect data entered\n";
       return;
     }
@@ -185,7 +183,7 @@ void Task4() {
   } else if (task_number == "60") {
     cout << "Enter N positive integer\n";
     int N = IntegerInput();
-    if (N == INT_MIN) {
+    if (N < 1) {
       cout << "Incorrect data entered\n";
       return;
     }
@@ -194,7 +192,7 @@ void Task4() {
     int x = 1, y = 1, z = 1;
     for (int i = 1; i < kASize; i++) {
       a[i] = IntegerInput();
-      if (a[i] == INT_MIN) {
+      if (a[i] == kIncorrectUserData) {
         cout << "Incorrect data entered\n";
         return;
       }
@@ -309,9 +307,9 @@ void Task5() {
   task_number = IntegerInput();
   switch (task_number) {
     case 9: {
-      const int kFileCount = 2;
+      const int kFilesCount = 2;
       ofstream fin("C.txt");
-      for (int file_number = 0; file_number < kFileCount; file_number++) {
+      for (int file_number = 0; file_number < kFilesCount; file_number++) {
         ifstream fout(CreateFile());
         if (fout.is_open() and fin.is_open()) {
           const int kArraySize = 1000;
@@ -390,7 +388,7 @@ void Task5() {
         int golden_and_silver_medals_count = 0;
         for (int j = 2; j < kColumnsCount - 2; j++) {
           int temp = IntegerInput();
-          if (temp < 0 or temp == INT_MIN) {
+          if (temp < 0) {
             cout << "Incorrect data entered\n";
             return;
           }
@@ -437,8 +435,6 @@ void Task5() {
                 fin << '|';
               }
               fin << "\r\n" << horizontal_line << "\r\n";
-              olympic_results[z][2] = "-1";
-              olympic_results[z][3] = "-1";
               break;
             }
           }
@@ -461,7 +457,6 @@ void Task5() {
     } break;
     default:
       cout << "Incorrect task number\n";
-      break;
   }
 }
 

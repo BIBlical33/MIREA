@@ -16,7 +16,7 @@ void Task60() {
     square_matrix[i] = new int[n];
     for (int j = 0; j < n; j++) {
       square_matrix[i][j] = DoubleInput();
-      if (square_matrix[i][j] == INT_MIN) {
+      if (square_matrix[i][j] == kIncorrectUserData) {
         cout << "Incorrect data entered\n";
         for (int z = 0; z <= i; z++) delete[] square_matrix[z];
         delete[] square_matrix;
@@ -123,7 +123,7 @@ void Task85() {
   cout << "Enter " << n << " numbers\n";
   for (int i = 0; i < n; i++) {
     x[i] = DoubleInput();
-    if (x[i] == INT_MIN) {
+    if (x[i] == kIncorrectUserData) {
       delete[] x;
       cout << "Incorrect data entered\n";
       return;
@@ -133,7 +133,7 @@ void Task85() {
   cout << "Enter " << m << " numbers\n";
   for (int i = 0; i < m; i++) {
     y[i] = DoubleInput();
-    if (y[i] == INT_MIN) {
+    if (y[i] == kIncorrectUserData) {
       cout << "Incorrect data entered\n";
       delete[] x, y;
       return;
