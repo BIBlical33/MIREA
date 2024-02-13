@@ -1,5 +1,5 @@
-#ifndef PRACTICE4_H_
-#define PRACTICE4_H_
+#ifndef PRACTICE4_PRACTICE4_H_
+#define PRACTICE4_PRACTICE4_H_
 #define _USE_MATH_DEFINES
 #include <Windows.h>
 
@@ -10,4 +10,4 @@
 #include <vector>
 
 #include "../mirea.h"
-#endif  // !PRACTICE4_H_
+#endif  // PRACTICE4_PRACTICE4_H_

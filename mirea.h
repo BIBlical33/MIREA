@@ -29,4 +29,4 @@ int IntegerInput() {
   }
   return kIncorrectUserData;
 }
-#endif  // !MIREA_H_
+#endif  // MIREA_H_
