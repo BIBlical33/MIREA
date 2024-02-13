@@ -24,8 +24,8 @@ double DoubleInput() {
 
 int IntegerInput() {
   double number = DoubleInput();
-  if (number == int(number)) {
-    return int(number);
+  if (number == static_cast<int>(number)) {
+    return static_cast<int>(number);
   }
   return kIncorrectUserData;
 }
