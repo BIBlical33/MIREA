@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Woorkbook1", "Woorkbook1\Woorkbook1.pyproj", "{FCED7ADE-8511-4F55-9956-06545B399F21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCED7ADE-8511-4F55-9956-06545B399F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCED7ADE-8511-4F55-9956-06545B399F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED922CFC-0CF9-4F02-A24F-CE10E89DFCA7}
+	EndGlobalSection
+EndGlobal
