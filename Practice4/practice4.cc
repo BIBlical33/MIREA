@@ -114,15 +114,21 @@ void CircleAreaCalculation() {
 void Task3() {
   cout << "What type of figure do u need? For:\nrectangle, enter "
           "'1'\ntriangle, enter '2'\ncircle, enter '3'\n";
-  int figure_type = IntegerInput();
+  enum class FigureType {
+    kRectangle = 1,
+    kTriangle,
+    kCircle,
+    kWrongType,
+  };
+  FigureType figure_type = static_cast<FigureType>(IntegerInput());
   switch (figure_type) {
-    case 1:
+    case FigureType::kRectangle:
       RectangleAreaCalculation();
       break;
-    case 2:
+    case FigureType::kTriangle:
       TriangleAreaCalculation();
       break;
-    case 3:
+    case FigureType::kCircle:
       CircleAreaCalculation();
       break;
     default:
@@ -306,6 +312,7 @@ int RomanToDec(string roman_number) {
   }
   return dec_number;
 }
+
 void Task6() {
   cout << "Enter roman number\n";
   string roman_number;
