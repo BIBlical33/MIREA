@@ -77,23 +77,23 @@ int* EratosthenesSieve(int i, int consistency_integers_size,
 }
 
 void Task2() {
-  int consistency_integers_ending;
   cout << "Enter positive integer value:\n";
-  consistency_integers_ending = IntegerInput();
+  int consistency_integers_ending = IntegerInput();
   if (consistency_integers_ending < 0) {
     cout << "Incorrect data entered\n";
     return;
+  } else {
+    int consistency_integers_size = consistency_integers_ending + 1;
+    int* consistency_integers = new int[consistency_integers_size];
+    for (int number = 0; number < consistency_integers_size; number++)
+      consistency_integers[number] = number;
+    consistency_integers[1] = 0;
+    EratosthenesSieve(2, consistency_integers_size, consistency_integers);
+    for (int number = 1; number < consistency_integers_size; number++)
+      if (number == consistency_integers[number]) cout << number << ' ';
+    cout << endl;
+    delete[] consistency_integers;
   }
-  int consistency_integers_size = consistency_integers_ending + 1;
-  int* consistency_integers = new int[consistency_integers_size];
-  for (int number = 0; number < consistency_integers_size; number++)
-    consistency_integers[number] = number;
-  consistency_integers[1] = 0;
-  EratosthenesSieve(2, consistency_integers_size, consistency_integers);
-  for (int number = 1; number < consistency_integers_size; number++)
-    if (number == consistency_integers[number]) cout << number << ' ';
-  cout << endl;
-  delete[] consistency_integers;
 }
 
 void Task3() {

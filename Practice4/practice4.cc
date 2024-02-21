@@ -21,8 +21,8 @@ string CreateFile() {
 }
 
 bool CustomIsDidgit(char symbol) {
-  const int kNill_ASCII_code = 48;
-  if (symbol >= kNill_ASCII_code and symbol <= kNill_ASCII_code + 9)
+  const int k0_ASCII_code = 48, kAmountOfDigits = 10;
+  if (symbol >= k0_ASCII_code and symbol < k0_ASCII_code + kAmountOfDigits)
     return true;
   else
     return false;
@@ -436,7 +436,6 @@ string ConversionBetweenNumberSystems(string number, int old_base,
   }
 
   // Check for non-existent number symbols in the given number system
-  char symbol;
   for (int i = 0; i < number.size(); i++) {
     if (SymbolsOfNumbersSystemsToDec.count(number[i]) == 0 or
         SymbolsOfNumbersSystemsToDec[number[i]] >= old_base)
