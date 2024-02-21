@@ -24,33 +24,37 @@ bool CustomIsDidgit(char symbol) {
   const int kNill_ASCII_code = 48;
   if (symbol >= kNill_ASCII_code and symbol <= kNill_ASCII_code + 9)
     return true;
-  return false;
+  else
+    return false;
+}
+
+void PushNumbersFromFileIntoVEctor(ifstream& fout, vector<double>& numbers) {
+  string file_content, number = "";
+  while (getline(fout, file_content)) {
+    // Split the string into numbers and push them into a vector
+    for (int i = 0; i < file_content.size(); i++) {
+      if (CustomIsDidgit(file_content[i]) or
+          (file_content[i] == '-' and CustomIsDidgit(file_content[i + 1]) and
+           i != file_content.size() - 1) or
+          (file_content[i] == '.' and CustomIsDidgit(file_content[i - 1]) and
+           CustomIsDidgit(file_content[i + 1]) and i != 0 and
+           i != file_content.size() - 1)) {
+        number += file_content[i];
+      } else if (i != 0 and CustomIsDidgit(file_content[i - 1])) {
+        numbers.push_back(stod(number));
+        number = "";
+      }
+    }
+  }
 }
 
 void Task1() {
   ifstream fout(CreateFile());
   if (fout.is_open()) {
     vector<double> numbers;
-    string file_content, number = "";
-    while (getline(fout, file_content)) {
-      // Split the string into numbers and push them into a vector
-      for (int i = 0; i < file_content.size(); i++) {
-        if (CustomIsDidgit(file_content[i]) or
-            (file_content[i] == '-' and CustomIsDidgit(file_content[i + 1]) and
-             i != file_content.size() - 1) or
-            (file_content[i] == '.' and CustomIsDidgit(file_content[i - 1]) and
-             CustomIsDidgit(file_content[i + 1]) and i != 0 and
-             i != file_content.size() - 1)) {
-          number += file_content[i];
-        } else if (i != 0 and CustomIsDidgit(file_content[i - 1])) {
-          numbers.push_back(stod(number));
-          number = "";
-        }
-      }
-    }
-    double sum = 0;
-    for (int i = 0; i < numbers.size(); i++) sum += numbers[i];
-    cout << sum << endl;
+    PushNumbersFromFileIntoVEctor(fout, numbers);
+    cout << accumulate(numbers.begin(), numbers.end(), 0.0)
+         << endl;  // Vector's elements summation
     fout.close();
   } else {
     cout << "Program cannot open this txt file\n";
@@ -58,9 +62,12 @@ void Task1() {
 }
 
 int Sign(double x) {
-  if (x > 0) return 1;
-  if (x == 0) return 0;
-  return -1;
+  if (x > 0)
+    return 1;
+  else if (x == 0)
+    return 0;
+  else
+    return -1;
 }
 
 void Task2() {
@@ -207,7 +214,7 @@ int RomanToDec(string roman_number) {
       count_of_similar_symbols_in_row++;
     }
     if (count_of_similar_symbols_in_row == 4) {
-      return -1;
+      return kIncorrectUserData;
     }
   }
 
@@ -322,7 +329,6 @@ void Task6() {
     cout << "Dec translation of this number is " << answer << endl;
   else
     cout << "It isn't roman number!\n";
-  return;
 }
 
 void Task7() {
@@ -459,8 +465,7 @@ void Task9() {
   cout << "Enter two positive integers in separate lines: the original number "
           "system and the new "
           "number system to convert\n";
-  int old_base = IntegerInput();
-  int new_base = IntegerInput();
+  int old_base = IntegerInput(), new_base = IntegerInput();
   cout << ConversionBetweenNumberSystems(number, old_base, new_base) << endl;
 }
 

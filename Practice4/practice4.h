@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iomanip>
 #include <map>
+#include <numeric>
 #include <vector>
 
 #include "../mirea.h"
