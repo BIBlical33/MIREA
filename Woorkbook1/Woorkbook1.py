@@ -1,4 +1,7 @@
-﻿INCORRECT_DATA = "INCORRECT_DATA"
+﻿from random import random
+from array import array
+
+INCORRECT_DATA = "INCORRECT_DATA"
 
 
 def float_input():
@@ -94,22 +97,37 @@ def task3_3_4():
     print()
 
 
-def list_initialization_with_keyboard(list_size):
-    user_list = list()
-    print(f"Enter {list_size} values in separate lines")
-    for value in range(list_size):
-        user_list.append(input())
-    return user_list
+# def array_initialization_with_keyboard(array_size):
+#     list_array = array("d")
+#     print(f"Enter {list_size} values in separate lines")
+#     for value in range(array_size):
+#         # user_array.appemap(int, input().split()))
+#     return user_array
 
 
 def task3_3_5():
-    print("Enter list size")
+    print("Enter array size")
     x_size = int_input()
-    if x_size != INCORRECT_DATA:
-        x = list_initialization_with_keyboard(x_size)
+    if x_size > 0:
+        x = array_initialization_with_keyboard(x_size)
+        x[::2] = reversed(x[::2])
         print(x)
-        x = x[1::2]
-        print(x)
+
+
+def task4_3_1():
+    print("Enter array size")
+    numbers_size = int_input()
+    if numbers_size > 0:
+        numbers = array("d")
+        for i in range(numbers_size):
+            rand_number = random()
+            while rand_number == 0:
+                rand_number = random()
+            numbers.append(rand_number)
+        for i in range(numbers_size):
+            print(numbers[i], end=" ")
+        print()
+        print(numbers)
 
 def main():
     print("Greetings. The program was written by Ilya Kramarenko, IVBO-10-23.")
@@ -131,6 +149,8 @@ def main():
             task3_3_4()
         elif command == "3.3.5":
             task3_3_5()
+        elif command == "4.3.1":
+            task4_3_1()
         else:
             print("Incorrect task number entered")
 
