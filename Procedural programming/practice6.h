@@ -4,5 +4,9 @@
 #include <fstream>
 #include <limits>
 
-#include "../mirea.h"
+#include "main.h"
+
+namespace practice6 {
+void Practice6Run();
+}
 #endif  // PRACTICE6_PRACTICE6_H_

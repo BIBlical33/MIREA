@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{25b19eaf-5a54-4d1f-a31a-124b4460adbe}</ProjectGuid>
-    <RootNamespace>Practice4</RootNamespace>
+    <ProjectGuid>{899b4064-4e80-48d8-9539-ba620b2c84bc}</ProjectGuid>
+    <RootNamespace>Proceduralprogramming</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,10 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main.cc" />
+    <ClCompile Include="marbles.cc" />
     <ClCompile Include="practice4.cc" />
+    <ClCompile Include="practice5.cc" />
+    <ClCompile Include="practice6.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="marbles.h" />
     <ClInclude Include="practice4.h" />
+    <ClInclude Include="practice5.h" />
+    <ClInclude Include="practice6.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

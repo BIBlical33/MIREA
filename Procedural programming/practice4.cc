@@ -1,25 +1,6 @@
 ﻿#include "practice4.h"
 
-string CreateFile() {
-  cout << "What do you want to name the text file?\n";
-  string filename, file_content;
-  cin >> filename;
-  ofstream file(filename + ".txt");
-  if (file.is_open()) {
-    cout << "What do you want to enter in file? Enter 'break!' separate line "
-            "for ending\n";
-    cin >> file_content;
-    while (file_content != "break!") {
-      file << file_content << "\r\n";
-      cin >> file_content;
-    }
-    file.close();
-  } else {
-    cout << "Program cannot open this txt file\n";
-  }
-  return filename + ".txt";
-}
-
+namespace {
 bool CustomIsDidgit(char symbol) {
   const int k0_ASCII_code = 48, kAmountOfDigits = 10;
   if (symbol >= k0_ASCII_code and symbol < k0_ASCII_code + kAmountOfDigits)
@@ -49,7 +30,7 @@ void PushNumbersFromFileIntoVEctor(ifstream& fout, vector<double>& numbers) {
 }
 
 void Task1() {
-  ifstream fout(CreateFile());
+  ifstream fout(main_functions::CreateTxtFile());
   if (fout.is_open()) {
     vector<double> numbers;
     PushNumbersFromFileIntoVEctor(fout, numbers);
@@ -72,7 +53,7 @@ int Sign(double x) {
 
 void Task2() {
   cout << "Enter x" << endl;
-  double number = DoubleInput();
+  double number = main_functions::DoubleInput();
   if (number == kIncorrectUserData)
     cout << "Incorrect data entered\n";
   else
@@ -81,7 +62,8 @@ void Task2() {
 
 void RectangleAreaCalculation() {
   cout << "Enter length and width of rectangle\n";
-  double rectangle_width = DoubleInput(), rectangle_length = DoubleInput();
+  double rectangle_width = main_functions::DoubleInput(),
+         rectangle_length = main_functions::DoubleInput();
   if (rectangle_length > 0 and rectangle_width > 0)
     cout << "S = " << rectangle_length * rectangle_width << endl;
   else
@@ -90,9 +72,9 @@ void RectangleAreaCalculation() {
 
 void TriangleAreaCalculation() {
   cout << "Enter three sides of triangle\n";
-  double triangle_first_side = DoubleInput(),
-         triangle_second_side = DoubleInput(),
-         triangle_third_side = DoubleInput(),
+  double triangle_first_side = main_functions::DoubleInput(),
+         triangle_second_side = main_functions::DoubleInput(),
+         triangle_third_side = main_functions::DoubleInput(),
          p = (triangle_first_side + triangle_second_side +
               triangle_third_side) /
              2.0;
@@ -111,7 +93,7 @@ void TriangleAreaCalculation() {
 
 void CircleAreaCalculation() {
   cout << "Enter radius of circle\n";
-  double r = DoubleInput();
+  double r = main_functions::DoubleInput();
   if (r > 0)
     cout << "S = " << M_PI * r * r << endl;
   else
@@ -127,7 +109,8 @@ void Task3() {
     kCircle,
     kWrongType,
   };
-  FigureType figure_type = static_cast<FigureType>(IntegerInput());
+  FigureType figure_type =
+      static_cast<FigureType>(main_functions::IntegerInput());
   switch (figure_type) {
     case FigureType::kRectangle:
       RectangleAreaCalculation();
@@ -333,7 +316,7 @@ void Task6() {
 
 void Task7() {
   cout << "Enter length of consistency (integer required)\n";
-  int consistency_length = IntegerInput();
+  int consistency_length = main_functions::IntegerInput();
   vector<int> s;
   s.push_back(0);
   cout << "What variant of consistency do u need? (1 or 2 required)\n";
@@ -365,8 +348,7 @@ int GetVendor(double C[3][3], int row, bool option) {
     if (C[0][row] >= C[1][row] and C[0][row] >= C[2][row]) return 1;
     if (C[1][row] >= C[2][row]) return 2;
     return 3;
-  }
-  if (option == false) {
+  } else {
     if (C[0][row] <= C[1][row] and C[0][row] <= C[2][row]) return 1;
     if (C[1][row] <= C[2][row]) return 2;
     return 3;
@@ -464,17 +446,18 @@ void Task9() {
   cout << "Enter two positive integers in separate lines: the original number "
           "system and the new "
           "number system to convert\n";
-  int old_base = IntegerInput(), new_base = IntegerInput();
+  int old_base = main_functions::IntegerInput(),
+      new_base = main_functions::IntegerInput();
   cout << ConversionBetweenNumberSystems(number, old_base, new_base) << endl;
 }
+}  // namespace
 
-int main() {
-  cout << "Greetings. The program was written by Ilya Kramarenko, "
-          "IVBO-10-23.\n";
+namespace practice4 {
+void Practice4Run() {
   int command = 1;
   while (command != 0) {
     cout << "Enter task number separate digit or '0' for exit\n";
-    command = IntegerInput();
+    command = main_functions::IntegerInput();
     if (command == 1)
       Task1();
     else if (command == 2)
@@ -498,5 +481,5 @@ int main() {
     else
       cout << "Wrong command.\n";
   }
-  return 0;
 }
+}  // namespace practice4

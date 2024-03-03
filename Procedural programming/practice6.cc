@@ -1,8 +1,9 @@
 #include "practice6.h"
 
+namespace {
 void Task60() {
   cout << "Enter n (positive int required)\n";
-  int n = IntegerInput();
+  int n = main_functions::IntegerInput();
   if (n < 1) {
     cout << "Incorrect data entered\n";
     return;
@@ -15,7 +16,7 @@ void Task60() {
     cout << "Enter " << n << " numbers\n";
     square_matrix[i] = new int[n];
     for (int j = 0; j < n; j++) {
-      square_matrix[i][j] = DoubleInput();
+      square_matrix[i][j] = main_functions::DoubleInput();
       if (square_matrix[i][j] == kIncorrectUserData) {
         cout << "Incorrect data entered\n";
         for (int z = 0; z <= i; z++) delete[] square_matrix[z];
@@ -47,8 +48,8 @@ int LCM(int first_number, int second_number) {
 
 void Task74() {
   cout << "Enter 4 positive integers: A, B, C, D\n";
-  int A = IntegerInput(), B = IntegerInput(), C = IntegerInput(),
-      D = IntegerInput();
+  int A = main_functions::IntegerInput(), B = main_functions::IntegerInput(),
+      C = main_functions::IntegerInput(), D = main_functions::IntegerInput();
   if (A < 0 or B < 0 or C < 0 or D < 0) {
     cout << "Incorrect data entered\n";
     return;
@@ -60,7 +61,8 @@ void Task74() {
 
 void Task82() {
   cout << "Enter 2 positive integers\n";
-  int fist_number = IntegerInput(), second_number = IntegerInput();
+  int fist_number = main_functions::IntegerInput(),
+      second_number = main_functions::IntegerInput();
   if (fist_number < 1 or second_number < 1) {
     cout << "Incorrect data entered\n";
     return;
@@ -114,7 +116,7 @@ int* findLCS(const int* x, int m, const int* y, int n, int& lcsLength) {
 
 void Task85() {
   cout << "Enter 2 positive integers: n and m\n";
-  int n = IntegerInput(), m = IntegerInput();
+  int n = main_functions::IntegerInput(), m = main_functions::IntegerInput();
   if (n < 1 or m < 1) {
     cout << "Incorrect data entered\n";
     return;
@@ -122,7 +124,7 @@ void Task85() {
   int* x = new int[n];
   cout << "Enter " << n << " numbers\n";
   for (int i = 0; i < n; i++) {
-    x[i] = DoubleInput();
+    x[i] = main_functions::DoubleInput();
     if (x[i] == kIncorrectUserData) {
       delete[] x;
       cout << "Incorrect data entered\n";
@@ -132,7 +134,7 @@ void Task85() {
   int* y = new int[m];
   cout << "Enter " << m << " numbers\n";
   for (int i = 0; i < m; i++) {
-    y[i] = DoubleInput();
+    y[i] = main_functions::DoubleInput();
     if (y[i] == kIncorrectUserData) {
       cout << "Incorrect data entered\n";
       delete[] x, y;
@@ -155,7 +157,7 @@ void Task85() {
 
 void Task89() {
   cout << "Enter 2 positive integers: n and m\n";
-  int n = IntegerInput(), m = IntegerInput();
+  int n = main_functions::IntegerInput(), m = main_functions::IntegerInput();
   if (n < 1 or m < 1) {
     cout << "Incorrect data entered\n";
     return;
@@ -164,7 +166,7 @@ void Task89() {
   a[0] = 0;
   cout << "Enter " << n << " numbers\n";
   for (int i = 1; i <= n; i++) {
-    a[i] = IntegerInput();
+    a[i] = main_functions::IntegerInput();
     if (a[i] < 1) {
       cout << "Incorrect data entered\n";
       delete[] a;
@@ -196,14 +198,14 @@ void Task89() {
   delete[] a;
   cout << "This sequence doesn't have a desired sequence\n";
 }
+}  // namespace
 
-int main() {
-  cout << "Greetings. The program was written by Ilya Kramarenko, "
-          "IVBO-10-23.\n";
+namespace practice6 {
+void Practice6Run() {
   int command = 1;
   while (command != 0) {
     cout << "Enter task number separate digit or '0' for exit\n";
-    command = IntegerInput();
+    command = main_functions::IntegerInput();
     if (command == 60)
       Task60();
     else if (command == 74)
@@ -219,5 +221,5 @@ int main() {
     else
       cout << "Wrong command.\n";
   }
-  return 0;
 }
+}  // namespace practice6

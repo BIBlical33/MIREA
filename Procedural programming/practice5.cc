@@ -1,25 +1,14 @@
 ﻿#include "practice5.h"
 
-string CreateFile() {
-  cout << "What do you want to name the text file?\n";
-  string filename, file_content;
-  cin >> filename;
-  ofstream file(filename + ".txt");
-  if (file.is_open()) {
-    cout << "What do you want to enter in file? Enter 'break!' separate line "
-            "for ending\n";
-    cin >> file_content;
-    while (file_content != "break!") {
-      file << file_content << "\r\n";
-      cin >> file_content;
-    }
-    file.close();
-  } else {
-    cout << "Program cannot open this txt file\n";
-  }
-  return filename + ".txt";
+namespace inner {
+void swap(int* a, int* b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
 }
+}  // namespace inner
 
+namespace {
 int EuclideanAlgorithmByDivision(int first_number, int second_number) {
   if (first_number != 0 and second_number != 0) {
     if (first_number > second_number)
@@ -46,7 +35,8 @@ int EuclideanAlgorithmBySubtraction(int first_number, int second_number) {
 
 void Task1() {
   cout << "Enter two positive integers\n";
-  int first_number = IntegerInput(), second_number = IntegerInput();
+  int first_number = main_functions::IntegerInput(),
+      second_number = main_functions::IntegerInput();
   if (first_number < 1 or second_number < 1) {
     cout << "Incorrect data entered\n";
     return;
@@ -78,7 +68,7 @@ int* EratosthenesSieve(int i, int consistency_integers_size,
 
 void Task2() {
   cout << "Enter positive integer value:\n";
-  int consistency_integers_ending = IntegerInput();
+  int consistency_integers_ending = main_functions::IntegerInput();
   if (consistency_integers_ending < 0) {
     cout << "Incorrect data entered\n";
     return;
@@ -98,10 +88,10 @@ void Task2() {
 
 void Task3() {
   cout << "Enter task number: '9' or '32'\n";
-  int task_number = IntegerInput();
+  int task_number = main_functions::IntegerInput();
   switch (task_number) {
     case 9: {
-      ifstream fout(CreateFile());
+      ifstream fout(main_functions::CreateTxtFile());
       if (fout.is_open()) {
         string file_content, number = "";
         while (getline(fout, file_content))
@@ -112,7 +102,7 @@ void Task3() {
       }
     } break;
     case 32: {
-      ifstream fout(CreateFile());
+      ifstream fout(main_functions::CreateTxtFile());
       cout << "How many characters to shift the information by (enter positive "
               "int for right shift or negative int for left shift)?\n";
       int cipher_shift;
@@ -162,7 +152,8 @@ void Task4() {
   cin >> task_number;
   if (task_number == "9") {
     cout << "Enter 2 integers: x and epsilon\n";
-    double x = DoubleInput(), epsilon = DoubleInput();
+    double x = main_functions::DoubleInput(),
+           epsilon = main_functions::DoubleInput();
     if (x == kIncorrectUserData or epsilon == kIncorrectUserData) {
       cout << "Incorrect data entered\n";
       return;
@@ -182,7 +173,7 @@ void Task4() {
     delete[] a;
   } else if (task_number == "60") {
     cout << "Enter N positive integer\n";
-    int N = IntegerInput();
+    int N = main_functions::IntegerInput();
     if (N < 1) {
       cout << "Incorrect data entered\n";
       return;
@@ -191,7 +182,7 @@ void Task4() {
     int* a = new int[kASize];
     int x = 1, y = 1, z = 1;
     for (int i = 1; i < kASize; i++) {
-      a[i] = IntegerInput();
+      a[i] = main_functions::IntegerInput();
       if (a[i] == kIncorrectUserData) {
         cout << "Incorrect data entered\n";
         return;
@@ -239,12 +230,6 @@ int* InitializingArray(ifstream& fout, int* array, int starting_index) {
 }
 
 // AI automaticly-generated functions
-void swap(int* a, int* b) {
-  int temp = *a;
-  *a = *b;
-  *b = temp;
-}
-
 int partition(int arr[], int low, int high) {
   int pivot = arr[high];  // выбираем последний элемент в качестве опорного
   int i = (low - 1);      // индекс меньшего элемента
@@ -253,10 +238,10 @@ int partition(int arr[], int low, int high) {
     // Если текущий элемент меньше или равен опорному
     if (arr[j] <= pivot) {
       i++;  // увеличиваем индекс меньшего элемента
-      swap(&arr[i], &arr[j]);
+      inner::swap(&arr[i], &arr[j]);
     }
   }
-  swap(&arr[i + 1], &arr[high]);
+  inner::swap(&arr[i + 1], &arr[high]);
   return (i + 1);
 }
 
@@ -304,13 +289,13 @@ void ReverseArray(int arr[], int starting_element, int ending_element) {
 void Task5() {
   cout << "Enter task number: '9' or '23'\n";
   int task_number;
-  task_number = IntegerInput();
+  task_number = main_functions::IntegerInput();
   switch (task_number) {
     case 9: {
       const int kFilesCount = 2;
       ofstream fin("C.txt");
       for (int file_number = 0; file_number < kFilesCount; file_number++) {
-        ifstream fout(CreateFile());
+        ifstream fout(main_functions::CreateTxtFile());
         if (fout.is_open() and fin.is_open()) {
           const int kArraySize = 1000;
           int* array = new int[kArraySize];
@@ -320,6 +305,7 @@ void Task5() {
           for (int i = 1; i < array[0]; i++) fin << to_string(array[i]) << " ";
           delete[] array;
           fout.close();
+          cout << '\n';
         } else {
           cout << "Program cannot open this txt files\n";
           break;
@@ -387,7 +373,7 @@ void Task5() {
                 "required)\n";
         int golden_and_silver_medals_count = 0;
         for (int j = 2; j < kColumnsCount - 2; j++) {
-          int temp = IntegerInput();
+          int temp = main_functions::IntegerInput();
           if (temp < 0) {
             cout << "Incorrect data entered\n";
             return;
@@ -459,14 +445,14 @@ void Task5() {
       cout << "Incorrect task number\n";
   }
 }
+}  // namespace
 
-int main() {
-  cout << "Greetings. The program was written by Ilya Kramarenko, "
-          "IVBO-10-23.\n";
+namespace practice5 {
+void Practice5Run() {
   int command = 1;
   while (command != 0) {
     cout << "Enter task number separate digit or '0' for exit\n";
-    command = IntegerInput();
+    command = main_functions::IntegerInput();
     if (command == 1)
       Task1();
     else if (command == 2)
@@ -482,5 +468,5 @@ int main() {
     else
       cout << "Wrong command.\n";
   }
-  return 0;
 }
+}  // namespace practice5

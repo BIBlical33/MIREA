@@ -1,8 +1,9 @@
-﻿#include "../mirea.h"
+﻿#include "main.h"
 
-int main() {
+namespace marbles {
+void MarblesRun() {
   cout << "Enter amount of marbles (positive int required)\n";
-  int marbles_amount = IntegerInput();
+  int marbles_amount = main_functions::IntegerInput();
   if (marbles_amount < 2) {
     cout << marbles_amount << "Incorrect data entered\n";
   } else {
@@ -16,8 +17,8 @@ int main() {
           break;
         }
     while (next_permutation(marbles, marbles + marbles_amount));
-    cout << amount_of_coincidences;
+    cout << amount_of_coincidences << '\n';
     delete[] marbles;
   }
-  return 0;
 }
+}  // namespace marbles

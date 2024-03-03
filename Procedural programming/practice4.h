@@ -10,5 +10,10 @@
 #include <numeric>
 #include <vector>
 
-#include "../mirea.h"
+#include "main.h"
+
+namespace practice4 {
+void Practice4Run();
+}  // namespace practice4
+
 #endif  // PRACTICE4_PRACTICE4_H_
