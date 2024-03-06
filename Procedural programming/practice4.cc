@@ -9,10 +9,10 @@ bool CustomIsDidgit(char symbol) {
     return false;
 }
 
-void PushNumbersFromFileIntoVEctor(ifstream& fout, vector<double>& numbers) {
-  string file_content, number = "";
+void PushNumbersFromFileIntoVector(std::ifstream& fout, std::vector<double>& numbers) {
+  std::string file_content, number = "";
   while (getline(fout, file_content)) {
-    // Split the string into numbers and push them into a vector
+    // Split the std::string into numbers and push them into a vector
     for (int i = 0; i < file_content.size(); i++) {
       if (CustomIsDidgit(file_content[i]) or
           (file_content[i] == '-' and CustomIsDidgit(file_content[i + 1]) and
@@ -30,15 +30,15 @@ void PushNumbersFromFileIntoVEctor(ifstream& fout, vector<double>& numbers) {
 }
 
 void Task1() {
-  ifstream fout(main_functions::CreateTxtFile());
+  std::ifstream fout(main_functions::CreateTxtFile());
   if (fout.is_open()) {
-    vector<double> numbers;
-    PushNumbersFromFileIntoVEctor(fout, numbers);
-    cout << accumulate(numbers.begin(), numbers.end(), 0.0)
-         << endl;  // Vector's elements summation
+    std::vector<double> numbers;
+    PushNumbersFromFileIntoVector(fout, numbers);
+    std::cout << accumulate(numbers.begin(), numbers.end(), 0.0)
+         << '\n';  // std::vector's elements summation
     fout.close();
   } else {
-    cout << "Program cannot open this txt file\n";
+    std::cout << "Program cannot open this txt file\n";
   }
 }
 
@@ -52,26 +52,26 @@ int Sign(double x) {
 }
 
 void Task2() {
-  cout << "Enter x" << endl;
+  std::cout << "Enter x" << '\n';
   double number = main_functions::DoubleInput();
   if (number == kIncorrectUserData)
-    cout << "Incorrect data entered\n";
+    std::cout << "Incorrect data entered\n";
   else
-    cout << Sign(number) << endl;
+    std::cout << Sign(number) << '\n';
 }
 
 void RectangleAreaCalculation() {
-  cout << "Enter length and width of rectangle\n";
+  std::cout << "Enter length and width of rectangle\n";
   double rectangle_width = main_functions::DoubleInput(),
          rectangle_length = main_functions::DoubleInput();
   if (rectangle_length > 0 and rectangle_width > 0)
-    cout << "S = " << rectangle_length * rectangle_width << endl;
+    std::cout << "S = " << rectangle_length * rectangle_width << '\n';
   else
-    cout << "It isn't rectangle\n";
+    std::cout << "It isn't rectangle\n";
 }
 
 void TriangleAreaCalculation() {
-  cout << "Enter three sides of triangle\n";
+  std::cout << "Enter three sides of triangle\n";
   double triangle_first_side = main_functions::DoubleInput(),
          triangle_second_side = main_functions::DoubleInput(),
          triangle_third_side = main_functions::DoubleInput(),
@@ -83,25 +83,25 @@ void TriangleAreaCalculation() {
       triangle_first_side + triangle_second_side > triangle_third_side and
       triangle_second_side + triangle_third_side > triangle_first_side and
       triangle_first_side + triangle_third_side > triangle_second_side)
-    cout << "S = "
+    std::cout << "S = "
          << sqrt(p * (p - triangle_first_side) * (p - triangle_second_side) *
                  (p - triangle_third_side))
-         << endl;
+         << '\n';
   else
-    cout << "It isn't a triangle\n";
+    std::cout << "It isn't a triangle\n";
 }
 
 void CircleAreaCalculation() {
-  cout << "Enter radius of circle\n";
+  std::cout << "Enter radius of circle\n";
   double r = main_functions::DoubleInput();
   if (r > 0)
-    cout << "S = " << M_PI * r * r << endl;
+    std::cout << "S = " << M_PI * r * r << '\n';
   else
-    cout << "It isn't a circle\n";
+    std::cout << "It isn't a circle\n";
 }
 
 void Task3() {
-  cout << "What type of figure do u need? For:\nrectangle, enter "
+  std::cout << "What type of figure do u need? For:\nrectangle, enter "
           "'1'\ntriangle, enter '2'\ncircle, enter '3'\n";
   enum class FigureType {
     kRectangle = 1,
@@ -122,7 +122,7 @@ void Task3() {
       CircleAreaCalculation();
       break;
     default:
-      cout << "Worng type\n";
+      std::cout << "Worng type\n";
       break;
   }
 }
@@ -130,15 +130,15 @@ void Task3() {
 void Task4() {
   HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
   SetConsoleTextAttribute(handle, FOREGROUND_RED);
-  cout << "               __________________________\n";
+  std::cout << "               __________________________\n";
   for (int i = 0; i < 12; i++) {
     if (i < 6) {
       SetConsoleTextAttribute(handle, 0x1F);
-      cout << "* * * * * * * *";
+      std::cout << "* * * * * * * *";
       SetConsoleTextAttribute(handle, 0xF4);
-      cout << "==========================\n";
+      std::cout << "==========================\n";
     } else {
-      cout << "=========================================\n";
+      std::cout << "=========================================\n";
     }
   }
   SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN |
@@ -146,46 +146,46 @@ void Task4() {
 }
 
 void Task5() {
-  cout << "y = sin(x)\n\n";
+  std::cout << "y = sin(x)\n\n";
   // Debugged for |x|<10 and |y|<10 only
   const double kYAxisBeginning = 1.2, kYAxisEnd = -1.2, kXAxisBeginning = -6.0,
                kXAxisEnd = 9.0, kStep = 0.1, kPrecision = 0.05;
-  string auxiliary_line(abs(kXAxisBeginning / kStep) - 2.0, ' ');
-  cout << auxiliary_line << "Y ^\n";
+  std::string auxiliary_line(abs(kXAxisBeginning / kStep) - 2.0, ' ');
+  std::cout << auxiliary_line << "Y ^\n";
   for (double y = kYAxisBeginning; y >= kYAxisEnd;
        y = round((y - kStep) * 10) / 10) {
     for (double x = kXAxisBeginning; x <= kXAxisEnd;
          x = round((x + kStep) * 10) / 10) {
       if (abs(sin(x) - y) <= kPrecision) {
-        cout << '*';
+        std::cout << '*';
       } else if (x == -1 * kStep and y == kStep) {
-        cout << '0';
+        std::cout << '0';
       } else if (x == 0) {
-        cout << '|';
+        std::cout << '|';
       } else if (y == 0 and x == kXAxisEnd) {
-        cout << "-> X";
+        std::cout << "-> X";
       } else if (y == 0) {
-        cout << '-';
+        std::cout << '-';
       } else if (y == -1 * kStep and x > 0 and x == static_cast<int>(x)) {
-        cout << x;
+        std::cout << x;
       } else if (y == -1 * kStep and x < 0 and
                  (x + kStep) == static_cast<int>((x + kStep))) {
-        cout << x + kStep;
+        std::cout << x + kStep;
         x += kStep;
       } else if (x == -1 * kStep and y > 0 and y == static_cast<int>(y)) {
-        cout << y;
+        std::cout << y;
       } else if (x == -2 * kStep and y < 0 and y == static_cast<int>(y)) {
-        cout << y;
+        std::cout << y;
         x += kStep;
       } else {
-        cout << ' ';
+        std::cout << ' ';
       }
     }
-    cout << endl;
+    std::cout << '\n';
   }
 }
 
-int RomanToDec(string roman_number) {
+int RomanToDec(std::string roman_number) {
   // Check for 3 consecutive characters
   char extra_char = ' ';
   int count_of_similar_symbols_in_row = 0;
@@ -304,24 +304,24 @@ int RomanToDec(string roman_number) {
 }
 
 void Task6() {
-  cout << "Enter roman number\n";
-  string roman_number;
-  cin >> roman_number;
+  std::cout << "Enter roman number\n";
+  std::string roman_number;
+  std::cin >> roman_number;
   int answer = RomanToDec(roman_number);
   if (answer != kIncorrectUserData)
-    cout << "Dec translation of this number is " << answer << endl;
+    std::cout << "Dec translation of this number is " << answer << '\n';
   else
-    cout << "It isn't roman number!\n";
+    std::cout << "It isn't roman number!\n";
 }
 
 void Task7() {
-  cout << "Enter length of consistency (integer required)\n";
+  std::cout << "Enter length of consistency (integer required)\n";
   int consistency_length = main_functions::IntegerInput();
-  vector<int> s;
+  std::vector<int> s;
   s.push_back(0);
-  cout << "What variant of consistency do u need? (1 or 2 required)\n";
-  string variant;
-  cin >> variant;
+  std::cout << "What variant of consistency do u need? (1 or 2 required)\n";
+  std::string variant;
+  std::cin >> variant;
   int m, b, c;
   if (variant == "1") {
     m = 37;
@@ -332,15 +332,15 @@ void Task7() {
     b = 13849;
     c = 65537;
   } else {
-    cout << "Incorrect command\n";
+    std::cout << "Incorrect command\n";
     return;
   }
-  cout << s[0] << ' ';
+  std::cout << s[0] << ' ';
   for (int i = 1; i < consistency_length; i++) {
     s.push_back((m * s[i - 1] + b) % c);
-    cout << s[i] << ' ';
+    std::cout << s[i] << ' ';
   }
-  cout << endl;
+  std::cout << '\n';
 }
 
 int GetVendor(double C[3][3], int row, bool option) {
@@ -357,7 +357,7 @@ int GetVendor(double C[3][3], int row, bool option) {
 
 void Task8() {
   const double A[3][4] = {{5, 2, 0, 10}, {3, 5, 2, 5}, {20, 0, 0, 0}};
-  map<int, vector<double>> B;
+  std::map<int, std::vector<double>> B;
   B[0] = {1.2, 0.5};
   B[1] = {2.8, 0.4};
   B[2] = {5, 1};
@@ -369,7 +369,7 @@ void Task8() {
       C[vendor][1] += A[vendor][product] * B[product][1];
       C[vendor][2] += A[vendor][product] * B[product][0];
     }
-  cout << "Max revenue = " << max(C[0][0], C[1][0], C[2][0]) << " for "
+  std::cout << "Max revenue = " << max(C[0][0], C[1][0], C[2][0]) << " for "
        << GetVendor(C, 0, 1)
        << " vendor\nMin revenue = " << min(C[0][0], C[1][0], C[2][0]) << " for "
        << GetVendor(C, 0, 0)
@@ -379,21 +379,21 @@ void Task8() {
        << " for " << GetVendor(C, 1, 0)
        << " vendor\nTotal revenue = " << C[0][0] + C[1][0] + C[2][0]
        << "\nTotal commissions = " << C[1][1] + C[0][1] + C[2][1]
-       << "\nTotal money = " << C[0][2] + C[1][2] + C[2][2] << endl;
+       << "\nTotal money = " << C[0][2] + C[1][2] + C[2][2] << '\n';
 }
 
-string ConversionTo10NumberSystem(string number, int old_base,
-                                  map<char, int> SymbolsOfNumbersSystemsToDec) {
+std::string ConversionTo10NumberSystem(std::string number, int old_base,
+                                  std::map<char, int> SymbolsOfNumbersSystemsToDec) {
   int dec_number = 0, reverse_digit_index = 0;
   for (int i = number.size() - 1; i >= 0; i--) {
     dec_number += SymbolsOfNumbersSystemsToDec[number[i]] *
                   pow(old_base, reverse_digit_index);
     reverse_digit_index++;
   }
-  return to_string(dec_number);
+  return std::to_string(dec_number);
 }
 
-string ConversionBetweenNumberSystems(string number, int old_base,
+std::string ConversionBetweenNumberSystems(std::string number, int old_base,
                                       int new_base) {
   if (old_base < 2 or new_base < 2) return "It isn't correct number system";
   if (old_base > 36 or new_base > 36)
@@ -401,8 +401,8 @@ string ConversionBetweenNumberSystems(string number, int old_base,
 
   // Fill with values in 10 number system the symbols of number systems with
   // base <= 36 and vice versa
-  map<char, int> SymbolsOfNumbersSystemsToDec;
-  map<int, char> SearchDigitsByValue;
+  std::map<char, int> SymbolsOfNumbersSystemsToDec;
+  std::map<int, char> SearchDigitsByValue;
   const int kNumberOfCharacters32NumberSystem = 36, kA_ASCII_Index = 65,
             k0_ASCII_Index = 48;
   int key = 0;
@@ -428,7 +428,7 @@ string ConversionBetweenNumberSystems(string number, int old_base,
   number = ConversionTo10NumberSystem(number, old_base,
                                       SymbolsOfNumbersSystemsToDec);
   if (new_base == 10) return number;
-  string conversion_number;
+  std::string conversion_number;
   int dec_number = stoi(number);
   while (dec_number > new_base - 1) {
     conversion_number += SearchDigitsByValue[dec_number % new_base];
@@ -440,15 +440,15 @@ string ConversionBetweenNumberSystems(string number, int old_base,
 }
 
 void Task9() {
-  cout << "Enter positive integer\n";
-  string number;
-  cin >> number;
-  cout << "Enter two positive integers in separate lines: the original number "
+  std::cout << "Enter positive integer\n";
+  std::string number;
+  std::cin >> number;
+  std::cout << "Enter two positive integers in separate lines: the original number "
           "system and the new "
           "number system to convert\n";
   int old_base = main_functions::IntegerInput(),
       new_base = main_functions::IntegerInput();
-  cout << ConversionBetweenNumberSystems(number, old_base, new_base) << endl;
+  std::cout << ConversionBetweenNumberSystems(number, old_base, new_base) << '\n';
 }
 }  // namespace
 
@@ -456,7 +456,7 @@ namespace practice4 {
 void Practice4Run() {
   int command = 1;
   while (command != 0) {
-    cout << "Enter task number separate digit or '0' for exit\n";
+    std::cout << "Enter task number separate digit or '0' for exit\n";
     command = main_functions::IntegerInput();
     if (command == 1)
       Task1();
@@ -479,7 +479,7 @@ void Practice4Run() {
     else if (command == 0)
       break;
     else
-      cout << "Wrong command.\n";
+      std::cout << "Wrong command.\n";
   }
 }
 }  // namespace practice4

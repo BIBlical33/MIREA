@@ -4,35 +4,35 @@
 #include "practice6.h"
 
 namespace main_functions {
-string CreateTxtFile() {
-  cout << "What do you want to name the text file?\n";
-  string filename, file_content;
-  cin >> filename;
-  ofstream file(filename + ".txt");
+std::string CreateTxtFile() {
+  std::cout << "What do you want to name the text file?\n";
+  std::string filename, file_content;
+  std::cin >> filename;
+  std::ofstream file(filename + ".txt");
   if (file.is_open()) {
-    cout << "What do you want to enter in file? Enter 'break!' separate line "
+    std::cout << "What do you want to enter in file? Enter 'break!' separate line "
             "for ending\n";
-    cin >> file_content;
+    std::cin >> file_content;
     while (file_content != "break!") {
       file << file_content << "\r\n";
-      cin >> file_content;
+      std::cin >> file_content;
     }
     file.close();
   } else {
-    cout << "Program cannot open this txt file\n";
+    std::cout << "Program cannot open this txt file\n";
   }
   return filename + ".txt";
 }
 
 double DoubleInput() {
-  string str_number;
-  cin >> str_number;
+  std::string str_number;
+  std::cin >> str_number;
   double number;
   try {
     number = stod(str_number);
-  } catch (invalid_argument) {
+  } catch (std::invalid_argument) {
     return kIncorrectUserData;
-  } catch (out_of_range) {
+  } catch (std::out_of_range) {
     return kIncorrectUserData;
   }
   return number;
@@ -48,13 +48,13 @@ int IntegerInput() {
 }  // namespace main_functions
 
 int main() {
-  cout << "Greetings. The program was written by Ilya Kramarenko, "
+  std::cout << "Greetings. The program was written by Ilya Kramarenko, "
           "IVBO-10-23.\n";
-  string command = "initializing";
+  std::string command = "initializing";
   while (command != "break!") {
-    cout << "Enter name of practice separate line or '0' for exit. For "
+    std::cout << "Enter name of practice separate line or '0' for exit. For "
             "instance, practice4 or marbles\n";
-    cin >> command;
+    std::cin >> command;
     if (command == "practice4")
       practice4::Practice4Run();
     else if (command == "practice5")
@@ -66,6 +66,6 @@ int main() {
     else if (command == "0")
       return 0;
     else
-      cout << "Incorrect command\n";
+      std::cout << "Incorrect command\n";
   }
 }

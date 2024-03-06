@@ -4,12 +4,10 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 const int kIncorrectUserData = INT_MIN;
 
 namespace main_functions {
-string CreateTxtFile();
+std::string CreateTxtFile();
 double DoubleInput();
 int IntegerInput();
 }  // namespace main_functions

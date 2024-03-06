@@ -2,10 +2,10 @@
 
 namespace marbles {
 void MarblesRun() {
-  cout << "Enter amount of marbles (positive int required)\n";
+  std::cout << "Enter amount of marbles (positive int required)\n";
   int marbles_amount = main_functions::IntegerInput();
   if (marbles_amount < 2) {
-    cout << marbles_amount << "Incorrect data entered\n";
+    std::cout << marbles_amount << "Incorrect data entered\n";
   } else {
     int* marbles = new int[marbles_amount];
     for (int i = 0; i < marbles_amount; i++) marbles[i] = i + 1;
@@ -16,8 +16,8 @@ void MarblesRun() {
           amount_of_coincidences++;
           break;
         }
-    while (next_permutation(marbles, marbles + marbles_amount));
-    cout << amount_of_coincidences << '\n';
+    while (std::next_permutation(marbles, marbles + marbles_amount));
+    std::cout << amount_of_coincidences << '\n';
     delete[] marbles;
   }
 }
