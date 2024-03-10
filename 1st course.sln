@@ -3,22 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{D529DAE3-6194-4EC7-B186-D4A94FA1F688}"
-	ProjectSection(SolutionItems) = preProject
-		Procedural programming1\main.cc = Procedural programming1\main.cc
-		Procedural programming1\main.h = Procedural programming1\main.h
-		Procedural programming1\marbles.cc = Procedural programming1\marbles.cc
-		Procedural programming1\Marbles.vcxproj = Procedural programming1\Marbles.vcxproj
-		Procedural programming1\Marbles.vcxproj.filters = Procedural programming1\Marbles.vcxproj.filters
-		Procedural programming1\Marbles.vcxproj.user = Procedural programming1\Marbles.vcxproj.user
-		Procedural programming1\practice4.cc = Procedural programming1\practice4.cc
-		Procedural programming1\practice4.h = Procedural programming1\practice4.h
-		Procedural programming1\practice5.cc = Procedural programming1\practice5.cc
-		Procedural programming1\practice5.h = Procedural programming1\practice5.h
-		Procedural programming1\practice6.cc = Procedural programming1\practice6.cc
-		Procedural programming1\practice6.h = Procedural programming1\practice6.h
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Procedural programming", "Procedural programming\Procedural programming.vcxproj", "{899B4064-4E80-48D8-9539-BA620B2C84BC}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Woorkbook1", "Woorkbook1\Woorkbook1.pyproj", "{FCED7ADE-8511-4F55-9956-06545B399F21}"
