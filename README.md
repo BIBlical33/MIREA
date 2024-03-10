@@ -1,4 +1,4 @@
 # MIREA
-Some of my tasks from the first semester of my first year procedural programming course.
+Some of my tasks from the 1st course at MIREA.
 
-The projects are written according to the Google C++ Style.
+The projects are written according to the Google Style.
