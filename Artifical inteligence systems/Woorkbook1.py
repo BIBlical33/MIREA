@@ -97,20 +97,31 @@ def task3_3_4():
     print()
 
 
-# def array_initialization_with_keyboard(array_size):
-#     list_array = array("d")
-#     print(f"Enter {list_size} values in separate lines")
-#     for value in range(array_size):
-#         # user_array.appemap(int, input().split()))
-#     return user_array
+def array_initialization_with_keyboard(array_size):
+    user_array = array("d")
+    print(f"Enter {array_size} numbers in separate lines")
+    for i in range(array_size):
+        value = int_input()
+        while value == INCORRECT_DATA:
+            print("Please enter a numer")
+            value = int_input()
+    return user_array
+
+
+def reverse_array_slice(arr, start, end):
+    while start < end:
+        arr[start], arr[end] = arr[end], arr[start]
+        start += 1
+        end -= 1
 
 
 def task3_3_5():
     print("Enter array size")
     x_size = int_input()
+
     if x_size > 0:
         x = array_initialization_with_keyboard(x_size)
-        x[::2] = reversed(x[::2])
+        reverse_array_slice(x, 0, len(x) - 1)
         print(x)
 
 
@@ -128,6 +139,7 @@ def task4_3_1():
             print(numbers[i], end=" ")
         print()
         print(numbers)
+
 
 def main():
     print("Greetings. The program was written by Ilya Kramarenko, IVBO-10-23.")

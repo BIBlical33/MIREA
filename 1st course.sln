@@ -5,7 +5,11 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Procedural programming", "Procedural programming\Procedural programming.vcxproj", "{899B4064-4E80-48D8-9539-BA620B2C84BC}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Woorkbook1", "Woorkbook1\Woorkbook1.pyproj", "{FCED7ADE-8511-4F55-9956-06545B399F21}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Artificial intelligence systems", "Woorkbook1\Artificial intelligence systems.pyproj", "{FCED7ADE-8511-4F55-9956-06545B399F21}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Object-oriented programming", "..\Labs\Labs.vcxproj", "{CE83839F-ECB9-462F-B388-ACFDCD27FB13}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Keyboard_hook", "Object-oriented programming\Keyboard_hook.pyproj", "{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,24 @@ Global
 		{FCED7ADE-8511-4F55-9956-06545B399F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCED7ADE-8511-4F55-9956-06545B399F21}.Release|x64.ActiveCfg = Release|Any CPU
 		{FCED7ADE-8511-4F55-9956-06545B399F21}.Release|x86.ActiveCfg = Release|Any CPU
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Debug|Any CPU.Build.0 = Debug|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Debug|x64.ActiveCfg = Debug|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Debug|x64.Build.0 = Debug|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Debug|x86.ActiveCfg = Debug|Win32
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Debug|x86.Build.0 = Debug|Win32
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Release|Any CPU.ActiveCfg = Release|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Release|Any CPU.Build.0 = Release|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Release|x64.ActiveCfg = Release|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Release|x64.Build.0 = Release|x64
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Release|x86.ActiveCfg = Release|Win32
+		{CE83839F-ECB9-462F-B388-ACFDCD27FB13}.Release|x86.Build.0 = Release|Win32
+		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|x64.ActiveCfg = Release|Any CPU
+		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

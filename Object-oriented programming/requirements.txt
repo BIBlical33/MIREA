@@ -1,0 +1,12 @@
+black==24.2.0
+click==8.1.7
+colorama==0.4.6
+mypy-extensions==1.0.0
+packaging==23.2
+pathspec==0.12.1
+pip==22.0.4
+platformdirs==4.2.0
+setuptools==58.1.0
+tomli==2.0.1
+typing_extensions==4.9.0
+pyautogui==0.9.53
