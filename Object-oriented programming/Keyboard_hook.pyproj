@@ -7,7 +7,7 @@
     <StartupFile>keyboard_hook.py</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>C:\Users\mag1s\source\repos\Keyboard_hook\</WorkingDirectory>
+    <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Keyboard_hook</Name>
     <RootNamespace>Keyboard_hook</RootNamespace>
