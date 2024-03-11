@@ -26,7 +26,7 @@
     <Compile Include="keyboard_hook.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="hook.cpp" />
+    <Content Include="hook.cc" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>

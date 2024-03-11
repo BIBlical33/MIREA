@@ -4,7 +4,7 @@ import pyautogui
 # Задержка перед началом симуляции (время для фокусировки на нужном окне)
 time.sleep(4)
 
-with open("hook.cpp", "r") as file:
+with open("hook.cc", "r") as file:
     for char in file.read():
         time.sleep(0.08)
         if char == "#":
