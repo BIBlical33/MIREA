@@ -6,7 +6,7 @@ time.sleep(4)
 
 with open("hook.cc", "r") as file:
     for char in file.read():
-        time.sleep(0.08)
+        time.sleep(0.06)
         if char == "#":
             pyautogui.hotkey('shift', '3')
         elif char == "(":

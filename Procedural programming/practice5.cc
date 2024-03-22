@@ -26,21 +26,21 @@ int EuclideanAlgorithmBySubtraction(int first_number, int second_number) {
 }
 
 void Task1() {
-  std::cout << "Enter two positive integers\n";
+  cout << "Enter two positive integers\n";
   int first_number = main_functions::IntegerInput(),
       second_number = main_functions::IntegerInput();
   if (first_number < 1 or second_number < 1) {
-    std::cout << "Incorrect data entered\n";
+    cout << "Incorrect data entered\n";
     return;
   }
   int greatest_common_divisor =
       EuclideanAlgorithmByDivision(first_number, second_number);
   if (greatest_common_divisor ==
       EuclideanAlgorithmBySubtraction(first_number, second_number))
-    std::cout << "Their reatest common divisor is " << greatest_common_divisor
-              << '\n';
+    cout << "Their reatest common divisor is " << greatest_common_divisor
+              << endl;
   else
-    std::cout << "Something went wrong\n";
+    cout << "Something went wrong\n";
 }
 
 int* EratosthenesSieve(int i, int consistency_integers_size,
@@ -59,10 +59,10 @@ int* EratosthenesSieve(int i, int consistency_integers_size,
 }
 
 void Task2() {
-  std::cout << "Enter positive integer value:\n";
+  cout << "Enter positive integer value:\n";
   int consistency_integers_ending = main_functions::IntegerInput();
   if (consistency_integers_ending < 0) {
-    std::cout << "Incorrect data entered\n";
+    cout << "Incorrect data entered\n";
     return;
   } else {
     int consistency_integers_size = consistency_integers_ending + 1;
@@ -72,47 +72,47 @@ void Task2() {
     consistency_integers[1] = 0;
     EratosthenesSieve(2, consistency_integers_size, consistency_integers);
     for (int number = 1; number < consistency_integers_size; number++)
-      if (number == consistency_integers[number]) std::cout << number << ' ';
-    std::cout << '\n';
+      if (number == consistency_integers[number]) cout << number << ' ';
+    cout << endl;
     delete[] consistency_integers;
   }
 }
 
 void Task3() {
-  std::cout << "Enter task number: '9' or '32'\n";
+  cout << "Enter task number: '9' or '32'\n";
   int task_number = main_functions::IntegerInput();
   switch (task_number) {
     case 9: {
       std::ifstream fout(main_functions::CreateTxtFile());
       if (fout.is_open()) {
-        std::string file_content, number = "";
+        string file_content, number = "";
         while (getline(fout, file_content))
           for (int i = 0; i < file_content.size(); i++)
-            std::cout << static_cast<int>(file_content[i]) << '\n';
+            cout << static_cast<int>(file_content[i]) << endl;
       } else {
-        std::cout << "Program cannot open this txt file\n";
+        cout << "Program cannot open this txt file\n";
       }
     } break;
     case 32: {
       std::ifstream fout(main_functions::CreateTxtFile());
-      std::cout
+      cout
           << "How many characters to shift the information by (enter positive "
              "int for right shift or negative int for left shift)?\n";
       int cipher_shift;
-      std::cin >> cipher_shift;
+      cin >> cipher_shift;
       if (fout.is_open()) {
-        std::string file_content, number = "";
+        string file_content, number = "";
         while (getline(fout, file_content)) {
           for (int i = 0; i < file_content.size(); i++)
             file_content[i] = static_cast<int>(file_content[i]) + cipher_shift;
-          std::cout << file_content << '\n';
+          cout << file_content << endl;
         }
       } else {
-        std::cout << "Program cannot open this txt file\n";
+        cout << "Program cannot open this txt file\n";
       }
     } break;
     default:
-      std::cout << "Incorrect task number\n";
+      cout << "Incorrect task number\n";
   }
 }
 
@@ -121,7 +121,7 @@ double* SetAConsistency(double* a, int n, const int kAConsistensySize,
   if (n < kAConsistensySize) {
     if ((a[n - 3] >= 0 and a[n - 2] * a[n - 2] * sqrt(a[n - 3]) != 0)) {
       a[n] = (12 - a[n - 1] * x) / (a[n - 2] * a[n - 2] * sqrt(a[n - 3]));
-      std::cout << n << ' ' << a[n] << '\n';
+      cout << n << ' ' << a[n] << endl;
     } else {
       int new_a_size = n + 1;
       double* temp_array = new double[new_a_size];
@@ -140,15 +140,15 @@ double* SetAConsistency(double* a, int n, const int kAConsistensySize,
 }
 
 void Task4() {
-  std::cout << "Enter task number: '9' or '60'\n";
-  std::string task_number;
-  std::cin >> task_number;
+  cout << "Enter task number: '9' or '60'\n";
+  string task_number;
+  cin >> task_number;
   if (task_number == "9") {
-    std::cout << "Enter 2 integers: x and epsilon\n";
+    cout << "Enter 2 integers: x and epsilon\n";
     double x = main_functions::DoubleInput(),
            epsilon = main_functions::DoubleInput();
     if (x == kIncorrectUserData or epsilon == kIncorrectUserData) {
-      std::cout << "Incorrect data entered\n";
+      cout << "Incorrect data entered\n";
       return;
     }
     const int kAConsistensySize = 1000;
@@ -158,17 +158,17 @@ void Task4() {
     bool flag = 0;
     for (int n = 16; n < a[0]; n++)
       if (abs(a[n] - a[n - 1]) < epsilon) {
-        std::cout << a[n] << '\n';
+        cout << a[n] << endl;
         flag = 1;
         break;
       }
-    if (flag == 0) std::cout << "Consistency doesn't contain this element\n";
+    if (flag == 0) cout << "Consistency doesn't contain this element\n";
     delete[] a;
   } else if (task_number == "60") {
-    std::cout << "Enter N positive integer\n";
+    cout << "Enter N positive integer\n";
     int N = main_functions::IntegerInput();
     if (N < 1) {
-      std::cout << "Incorrect data entered\n";
+      cout << "Incorrect data entered\n";
       return;
     }
     const int kASize = 3 * N + 1;
@@ -177,7 +177,7 @@ void Task4() {
     for (int i = 1; i < kASize; i++) {
       a[i] = main_functions::IntegerInput();
       if (a[i] == kIncorrectUserData) {
-        std::cout << "Incorrect data entered\n";
+        cout << "Incorrect data entered\n";
         return;
       }
       if (i <= N)
@@ -187,17 +187,17 @@ void Task4() {
       else
         z *= a[i];
     }
-    std::cout << "Q = " << x * x + y * y + z * z << '\n';
+    cout << "Q = " << x * x + y * y + z * z << endl;
     delete[] a;
   } else {
-    std::cout << "Incorrect task number\n";
+    cout << "Incorrect task number\n";
   }
 }
 
 int* InitializingArray(std::ifstream& fout, int* array, int starting_index) {
   if (fout.is_open()) {
     int array_index = starting_index;
-    std::string file_content, number = "";
+    string file_content, number = "";
     while (getline(fout, file_content)) {
       for (int i = 0; i < file_content.size(); i++) {
         if (isdigit(file_content[i]) or
@@ -217,7 +217,7 @@ int* InitializingArray(std::ifstream& fout, int* array, int starting_index) {
     fout.close();
     return array;
   } else {
-    std::cout << "Program cannot open this txt file\n";
+    cout << "Program cannot open this txt file\n";
     return array;
   }
 }
@@ -256,10 +256,10 @@ void quickSort(int arr[], int low, int high) {
 }
 // Ending AI auto-generated functions
 
-void DrawingTableInFile(std::ofstream& fout, std::string** array,
+void DrawingTableInFile(std::ofstream& fout, string** array,
                         const int kRowsCount, const int kColumnsCount) {
   if (fout.is_open()) {
-    std::string horizontal_line(83, '-');
+    string horizontal_line(83, '-');
     horizontal_line = "|" + horizontal_line + "|";
     fout << horizontal_line << "\r\n";
     fout << "|           |Country    |Golden     |Silver     |Bronze     "
@@ -276,7 +276,7 @@ void DrawingTableInFile(std::ofstream& fout, std::string** array,
       fout << "\r\n" << horizontal_line << "\r\n";
     }
   } else {
-    std::cout << "Program cannot open this txt file\n";
+    cout << "Program cannot open this txt file\n";
   }
 }
 
@@ -286,7 +286,7 @@ void ReverseArray(int arr[], int starting_element, int ending_element) {
 }
 
 void Task5() {
-  std::cout << "Enter task number: '9' or '23'\n";
+  cout << "Enter task number: '9' or '23'\n";
   int task_number;
   task_number = main_functions::IntegerInput();
   switch (task_number) {
@@ -305,33 +305,33 @@ void Task5() {
             fin << std::to_string(array[i]) << " ";
           delete[] array;
           fout.close();
-          std::cout << '\n';
+          cout << endl;
         } else {
-          std::cout << "Program cannot open this txt files\n";
+          cout << "Program cannot open this txt files\n";
           break;
         }
       }
       fin.close();
       std::ifstream fout("C.txt");
       if (fout.is_open()) {
-        std::string file_content;
-        while (getline(fout, file_content)) std::cout << file_content;
+        string file_content;
+        while (getline(fout, file_content)) cout << file_content;
         fout.close();
         std::fstream clear_file("C.txt", std::ios::out);
         clear_file.close();
       } else {
-        std::cout << "Program cannot open this txt file\n";
+        cout << "Program cannot open this txt file\n";
       }
     } break;
     case 23: {
-      std::string** olympic_results;
+      string** olympic_results;
       const int kRowsCount = 11;  // First row'll be skiped
       const int kColumnsCount = 7;
-      olympic_results = new std::string*[kRowsCount];
+      olympic_results = new string*[kRowsCount];
       olympic_results[0] = 0;
       int* olympic_results_by_golden_and_silver_medals = new int[kRowsCount];
       for (int i = 1; i < kRowsCount; i++) {
-        olympic_results[i] = new std::string[kColumnsCount];
+        olympic_results[i] = new string[kColumnsCount];
         olympic_results[i][0] = std::to_string(i);
         switch (i) {
           case 1:
@@ -367,7 +367,7 @@ void Task5() {
         }
       }
       for (int i = 1; i < kRowsCount; i++) {
-        std::cout
+        cout
             << "Enter " << olympic_results[i][1]
             << " amount of golden medals, silver medals, bronze medals (3 "
                "integers "
@@ -376,7 +376,7 @@ void Task5() {
         for (int j = 2; j < kColumnsCount - 2; j++) {
           int temp = main_functions::IntegerInput();
           if (temp < 0) {
-            std::cout << "Incorrect data entered\n";
+            cout << "Incorrect data entered\n";
             return;
           }
           if (j == 2 or j == 3) golden_and_silver_medals_count += temp;
@@ -403,7 +403,7 @@ void Task5() {
                    kRowsCount - 1);
       fin.open("olympic_games.txt");
       if (fin.is_open()) {
-        std::string horizontal_line(83, '-');
+        string horizontal_line(83, '-');
         horizontal_line = "|" + horizontal_line + "|";
         fin << horizontal_line << "\r\n"
             << "|           |Country    |Golden     |Silver     |Bronze     "
@@ -428,22 +428,22 @@ void Task5() {
         }
         fin.close();
       } else {
-        std::cout << "Program cannot open this txt file\n";
+        cout << "Program cannot open this txt file\n";
       }
       std::ifstream fout("olympic_games.txt");
-      std::string file_content;
+      string file_content;
       if (fout.is_open()) {
-        while (getline(fout, file_content)) std::cout << file_content << '\n';
+        while (getline(fout, file_content)) cout << file_content << endl;
         fout.close();
       } else {
-        std::cout << "Program cannot open this txt file\n";
+        cout << "Program cannot open this txt file\n";
       }
       delete[] olympic_results_by_golden_and_silver_medals;
       for (int i = 0; i < kRowsCount; i++) delete[] olympic_results[i];
       delete[] olympic_results;
     } break;
     default:
-      std::cout << "Incorrect task number\n";
+      cout << "Incorrect task number\n";
   }
 }
 }  // namespace
@@ -452,7 +452,7 @@ namespace practice5 {
 void Practice5Run() {
   int command = 1;
   while (command != 0) {
-    std::cout << "Enter task number separate digit or '0' for exit\n";
+    cout << "Enter task number separate digit or '0' for exit\n";
     command = main_functions::IntegerInput();
     if (command == 1)
       Task1();
@@ -467,7 +467,7 @@ void Practice5Run() {
     else if (command == 0)
       break;
     else
-      std::cout << "Wrong command.\n";
+      cout << "Wrong command.\n";
   }
 }
 }  // namespace practice5

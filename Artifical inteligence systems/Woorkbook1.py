@@ -1,5 +1,8 @@
-﻿from random import random
+﻿from math import exp, sqrt
+from random import random
 from array import array
+from matplotlib import pyplot
+import numpy
 
 INCORRECT_DATA = "INCORRECT_DATA"
 
@@ -105,24 +108,28 @@ def array_initialization_with_keyboard(array_size):
         while value == INCORRECT_DATA:
             print("Please enter a numer")
             value = int_input()
+        user_array.append(value)
     return user_array
 
 
-def reverse_array_slice(arr, start, end):
-    while start < end:
-        arr[start], arr[end] = arr[end], arr[start]
-        start += 1
-        end -= 1
+def print_array(array):
+    for element in array:
+        print(element, end=" ")
+    print()
 
 
 def task3_3_5():
     print("Enter array size")
     x_size = int_input()
-
     if x_size > 0:
         x = array_initialization_with_keyboard(x_size)
-        reverse_array_slice(x, 0, len(x) - 1)
-        print(x)
+        if len(x) % 2 == 0:
+            x[::2] = x[-2::-2]
+        else:
+            x[:-1:2] = x[-2::-2]
+            print_array(x)
+    else:
+        print("Incorrect input")
 
 
 def task4_3_1():
@@ -135,10 +142,65 @@ def task4_3_1():
             while rand_number == 0:
                 rand_number = random()
             numbers.append(rand_number)
-        for i in range(numbers_size):
-            print(numbers[i], end=" ")
-        print()
-        print(numbers)
+        figure = pyplot.figure(figsize=(10, 6))
+        pyplot.xlabel("number")
+        pyplot.ylabel("index")
+        indexes_list_of_numbers = list(range(len(numbers)))
+        pyplot.scatter(numbers, indexes_list_of_numbers)
+        mean = numpy.mean(numbers)
+        median = numpy.median(numbers)
+        print("Array's mean =", mean)
+        print("Array's median =", median)
+        if mean > median:
+            print("Array's mean is larger")
+        elif mean < median:
+            print("Array's median is larger")
+        else:
+            print("The values are equal")
+        pyplot.show()
+    else:
+        print("Incorrect data entered")
+
+
+def f(x):
+    return sqrt(1 + numpy.exp(1) ** sqrt(x) + numpy.cos(x * x)) / abs(
+        1 - numpy.sin(x) ** 3
+    ) + numpy.log(abs(2 * x))
+
+
+def task4_3_2():
+    f_returning_values = numpy.zeros(
+        10
+    )
+    indexes = []
+
+    # Заполняем массив f_returning_values значениями, возвращаемыми функцией f(x)
+    for x in range(10):
+        f_returning_values[x] = f(x)
+
+    # Вычисляем первую половину массива f_returning_values
+    first_half_of_f_returning_values = f_returning_values[
+        : len(f_returning_values) // 2
+    ]
+
+    # Создаем массив w для индексов
+    w = numpy.arange(1, len(first_half_of_f_returning_values) + 1)
+
+    # Строим график для всех значений f(x)
+    pyplot.plot(f_returning_values)
+    pyplot.xlabel("x")
+    pyplot.ylabel("f(x)")
+    pyplot.show()
+
+    # Строим диаграмму рассеяния для первой половины значений f(x)
+    pyplot.scatter(w, first_half_of_f_returning_values)
+    pyplot.xlabel("x")
+    pyplot.ylabel("f(x)")
+    pyplot.show()
+
+
+def task4_3_3():
+    pass
 
 
 def main():
@@ -163,6 +225,10 @@ def main():
             task3_3_5()
         elif command == "4.3.1":
             task4_3_1()
+        elif command == "4.3.2":
+            task4_3_2()
+        elif command == "4.3.3":
+            task4_3_3()
         else:
             print("Incorrect task number entered")
 

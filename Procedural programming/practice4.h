@@ -1,6 +1,6 @@
-#ifndef PRACTICE4_PRACTICE4_H_
-#define PRACTICE4_PRACTICE4_H_
-#define _USE_MATH_DEFINES
+#ifndef PRACTICE4_H_
+#define PRACTICE4_H_
+
 #include <Windows.h>
 
 #include <cmath>
@@ -13,7 +13,10 @@
 #include "main.h"
 
 namespace practice4 {
+
+// Task manager in Practice4
 void Practice4Run();
+
 }  // namespace practice4
 
-#endif  // PRACTICE4_PRACTICE4_H_
+#endif  // PRACTICE4_H_
