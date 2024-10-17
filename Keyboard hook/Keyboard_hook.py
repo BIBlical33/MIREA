@@ -1,67 +1,68 @@
 import time
 import pyautogui
 
-# Задержка перед началом симуляции (время для фокусировки на нужном окне)
-time.sleep(4)
+
+time.sleep(5)
+
 
 with open("hook.cc", "r") as file:
     for char in file.read():
-        time.sleep(0.06)
+        time.sleep(0.03551)
         if char == "#":
-            pyautogui.hotkey('shift', '3')
+            pyautogui.hotkey("shift", "3")
         elif char == "(":
-            pyautogui.press('(')
+            pyautogui.press("(")
         elif char == ")":
-            pyautogui.press(')')
+            pyautogui.press(")")
         elif char == "{":
-            pyautogui.press('{')
+            pyautogui.press("{")
         elif char == "}":
-            pyautogui.press('}')
+            pyautogui.press("}")
         elif char == " ":
-            pyautogui.press('space')
+            pyautogui.press("space")
         elif char == "\n":
-            pyautogui.press('enter')
+            pyautogui.press("enter")
         elif char == "\t":
             pass
         elif char == "<":
-            pyautogui.hotkey('shift', ',')
+            pyautogui.hotkey("shift", ",")
         elif char == ">":
-            pyautogui.hotkey('shift', '.')
+            pyautogui.hotkey("shift", ".")
         elif char == ";":
-            pyautogui.press(';')
+            pyautogui.press(";")
         elif char == '"':
-            pyautogui.press("\"")
+            pyautogui.press('"')
         elif char == "'":
             pyautogui.press("'")
         elif char == ":":
-            pyautogui.hotkey('shift', ';')
+            pyautogui.hotkey("shift", ";")
         elif char == "!":
-            pyautogui.hotkey('shift', '1')
+            pyautogui.hotkey("shift", "1")
         elif char == "*":
-            pyautogui.hotkey('shift', '8')
+            pyautogui.hotkey("shift", "8")
         elif char == "/":
-            pyautogui.press('/')
+            pyautogui.press("/")
         elif char == ".":
-            pyautogui.press('.')
+            pyautogui.press(".")
         elif char == "%":
-            pyautogui.hotkey('shift', '5')
+            pyautogui.hotkey("shift", "5")
         elif char == "=":
-            pyautogui.press('=')
+            pyautogui.press("=")
         elif char == "+":
-            pyautogui.hotkey('shift', '=')
+            pyautogui.hotkey("shift", "=")
         elif char == "-":
-            pyautogui.press('-')
+            pyautogui.press("-")
         elif char == "_":
-            pyautogui.hotkey('shift', '-')
+            pyautogui.hotkey("shift", "-")
         elif char == "\\":
-            pyautogui.press('\\')
+            pyautogui.press("\\")
         elif char == "|":
-            pyautogui.hotkey('shift', '\\')
+            pyautogui.hotkey("shift", "\\")
         elif char == "[":
-            pyautogui.press('[')
+            pyautogui.press("[")
         elif char == "]":
-            pyautogui.press(']')
+            pyautogui.press("]")
         elif char == ",":
-            pyautogui.press(',')
+            pyautogui.press(",")
         else:
             pyautogui.press(char)

@@ -157,7 +157,7 @@ void Task5() {
   // Debugged for |x|<10 and |y|<10 only
   const double kYAxisBeginning = 1.2, kYAxisEnd = -1.2, kXAxisBeginning = -6.0,
                kXAxisEnd = 9.0, kStep = 0.1, kPrecision = 0.05;
-  const string auxiliary_line(abs(kXAxisBeginning / kStep) - 2.0, ' ');
+  const string auxiliary_line(static_cast<size_t>(abs(kXAxisBeginning / kStep) - 2.0), ' ');
 
   // Draw sin(x)
   cout << auxiliary_line << "Y ^\n";
@@ -194,12 +194,12 @@ void Task5() {
   }
 }
 
-bool HasStringFourOrMoreSameCharacters(string str) {
+bool HasStringFourSameCharacters(string str) {
   char extra_char = ' ';
   int count_of_similar_symbols_in_row = 0;
-  for (int i = 0; i < str.size(); i++) {
-    if (extra_char != str[i]) {
-      extra_char = str[i];
+  for (auto &character : str) {
+    if (extra_char != character) {
+      extra_char = character;
       count_of_similar_symbols_in_row = 1;
     } else {
       count_of_similar_symbols_in_row++;
@@ -212,7 +212,7 @@ bool HasStringFourOrMoreSameCharacters(string str) {
 }
 
 int RomanToDec(string roman_number) {
-  if (HasStringFourOrMoreSameCharacters(roman_number)) {
+  if (HasStringFourSameCharacters(roman_number)) {
     return kIncorrectUserData;
   }
 
@@ -388,13 +388,13 @@ void Task8() {
       C[vendor][1] += A[vendor][product] * B[product][1];
       C[vendor][2] += A[vendor][product] * B[product][0];
     }
-  cout << "Max revenue = " << max(C[0][0], C[1][0], C[2][0]) << " for "
+  cout << "Max revenue = " << max(C[0][0], max(C[1][0], C[2][0])) << " for "
        << GetVendor(C, 0, 1)
-       << " vendor\nMin revenue = " << min(C[0][0], C[1][0], C[2][0]) << " for "
+       << " vendor\nMin revenue = " << min(C[0][0], min(C[1][0], C[2][0])) << " for "
        << GetVendor(C, 0, 0)
-       << " vendor\nMax commissions = " << max(C[0][1], C[1][1], C[2][1])
+       << " vendor\nMax commissions = " << max(C[0][1],max(C[1][1], C[2][1]))
        << " for " << GetVendor(C, 1, 1)
-       << " vendor\nMin commissions = " << min(C[0][1], C[1][1], C[2][1])
+       << " vendor\nMin commissions = " << min(C[0][1], min(C[1][1], C[2][1]))
        << " for " << GetVendor(C, 1, 0)
        << " vendor\nTotal revenue = " << C[0][0] + C[1][0] + C[2][0]
        << "\nTotal commissions = " << C[1][1] + C[0][1] + C[2][1]
@@ -405,9 +405,9 @@ string ConversionTo10NumberSystem(
     string number, int old_base,
     std::map<char, int> SymbolsOfNumbersSystemsToDec) {
   int dec_number = 0, reverse_digit_index = 0;
-  for (int i = number.size() - 1; i >= 0; i--) {
+  for (long long i = number.size() - 1; i >= 0; i--) {
     dec_number += SymbolsOfNumbersSystemsToDec[number[i]] *
-                  pow(old_base, reverse_digit_index);
+                  static_cast<int>(pow(old_base, reverse_digit_index));
     reverse_digit_index++;
   }
   return std::to_string(dec_number);
@@ -419,7 +419,7 @@ string ConversionBetweenNumberSystems(string number, int old_base,
   if (old_base > 36 or new_base > 36)
     return "The program support numbers of systems with base <= 36 only";
 
-  // Fill with values in 10 number system the symbols of number systems with
+  // Filling with values in 10 number system the symbols of number systems with
   // base <= 36 and vice versa
   std::map<char, int> SymbolsOfNumbersSystemsToDec;
   std::map<int, char> SearchDigitsByValue;

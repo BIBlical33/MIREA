@@ -17,10 +17,11 @@ namespace main_functions {
 // Creates a txt file and writes user input to it. Returns filename
 string CreateTxtFile();
 
-// Check input value and return it if double else return kIncorrectUserData
+// Checks input value and returns it if double else returns kIncorrectUserData
 double DoubleInput();
 
-// Check DoubleInput() value and return it if int else return kIncorrectUserData
+// Checks DoubleInput() value and returns it if int else returns
+// kIncorrectUserData
 int IntegerInput();
 
 }  // namespace main_functions

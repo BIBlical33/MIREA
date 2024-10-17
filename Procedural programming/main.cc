@@ -5,6 +5,7 @@
 
 namespace main_functions {
 
+// Creates a txt file and writes user input to it. Returns filename
 string CreateTxtFile() {
   cout << "What do you want to name the text file?\n";
   string filename, file_content;
@@ -25,6 +26,7 @@ string CreateTxtFile() {
   return filename + ".txt";
 }
 
+// Check input value and return it if double else return kIncorrectUserData
 double DoubleInput() {
   string str_number;
   cin >> str_number;
@@ -39,6 +41,7 @@ double DoubleInput() {
   return number;
 }
 
+// Check DoubleInput() value and return it if int else return kIncorrectUserData
 int IntegerInput() {
   double number = DoubleInput();
   if (number == static_cast<int>(number))
