@@ -63,7 +63,7 @@ int main() {
     if (command == "practice4")
       practice4::Practice4Run();
     else if (command == "practice5")
-      practice5::Practice5Run();
+      practice5::Practice5Run();  
     else if (command == "practice6")
       practice6::Practice6Run();
     else if (command == "marbles")
