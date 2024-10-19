@@ -197,9 +197,9 @@ void Task5() {
 bool HasStringFourSameCharacters(string str) {
   char extra_char = ' ';
   int count_of_similar_symbols_in_row = 0;
-  for (auto &character : str) {
-    if (extra_char != character) {
-      extra_char = character;
+  for (int i = 0; i < str.size(); i++) {
+    if (extra_char != str[i]) {
+      extra_char = str[i];
       count_of_similar_symbols_in_row = 1;
     } else {
       count_of_similar_symbols_in_row++;
