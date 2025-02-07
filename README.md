@@ -1,5 +1,4 @@
 # MIREA
-
 Some of my tasks from MIREA - russsian technology university 
 
-Use git branches for navigation
+The projects are written according to the Google Style (except C++ exceptions rules).
