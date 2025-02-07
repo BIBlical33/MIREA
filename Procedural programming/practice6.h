@@ -1,12 +1,9 @@
-#ifndef PRACTICE6_PRACTICE6_H_
+#ifndef PRACTICE6_H_
 #define PRACTICE6_H_
-#include <cmath>
-#include <fstream>
-#include <limits>
 
-#include "main.h"
+namespace procedural_programming {
 
-namespace practice6 {
 void Practice6Run();
+
 }
-#endif  // PRACTICE6_PRACTICE6_H_
+#endif  // PRACTICE6_H_

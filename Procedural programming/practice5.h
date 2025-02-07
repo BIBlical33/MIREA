@@ -1,12 +1,9 @@
-#ifndef PRACTICE5_PRACTICE5_H_
-#define PRACTICE5_PRACTICE5_H_
-#include <cmath>
-#include <fstream>
-#include <limits>
+#ifndef PRACTICE5_H_
+#define PRACTICE5_H_
 
-#include "main.h"
+namespace procedural_programming {
 
-namespace practice5 {
 void Practice5Run();
+
 }
-#endif  // PRACTICE5_PRACTICE5_H_
+#endif  // PRACTICE5_H_

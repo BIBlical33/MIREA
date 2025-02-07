@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Procedural programming", "P
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Keyboard hook to paste into Avrora", "Keyboard hook\Keyboard hook to paste into Avrora.pyproj", "{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithmic bases of data processing (coursework)", "Algorithmic bases of data processing (coursework)\Algorithmic bases of data processing (coursework).vcxproj", "{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithmic bases of data processing (practices)", "Algorithmic bases of data processing (practices)\Algorithmic bases of data processing (practices).vcxproj", "{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,30 @@ Global
 		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|x64.ActiveCfg = Release|Any CPU
 		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|x86.ActiveCfg = Release|Any CPU
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Debug|Any CPU.Build.0 = Debug|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Debug|x64.ActiveCfg = Debug|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Debug|x64.Build.0 = Debug|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Debug|x86.ActiveCfg = Debug|Win32
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Debug|x86.Build.0 = Debug|Win32
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Release|Any CPU.ActiveCfg = Release|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Release|Any CPU.Build.0 = Release|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Release|x64.ActiveCfg = Release|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Release|x64.Build.0 = Release|x64
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Release|x86.ActiveCfg = Release|Win32
+		{FB49DC4C-7338-4D33-9F19-CE4AB95F4394}.Release|x86.Build.0 = Release|Win32
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|Any CPU.Build.0 = Debug|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x64.ActiveCfg = Debug|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x64.Build.0 = Debug|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x86.ActiveCfg = Debug|Win32
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x86.Build.0 = Debug|Win32
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|Any CPU.ActiveCfg = Release|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|Any CPU.Build.0 = Release|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x64.ActiveCfg = Release|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x64.Build.0 = Release|x64
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x86.ActiveCfg = Release|Win32
+		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

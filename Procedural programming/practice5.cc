@@ -1,6 +1,18 @@
 ﻿#include "practice5.h"
 
+#include <cmath>
+#include <fstream>
+#include <limits>
+
+#include "main_functions.h"
+
 namespace {
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
+
 int EuclideanAlgorithmByDivision(int first_number, int second_number) {
   if (first_number != 0 and second_number != 0) {
     if (first_number > second_number)
@@ -38,7 +50,7 @@ void Task1() {
   if (greatest_common_divisor ==
       EuclideanAlgorithmBySubtraction(first_number, second_number))
     cout << "Their reatest common divisor is " << greatest_common_divisor
-              << endl;
+         << endl;
   else
     cout << "Something went wrong\n";
 }
@@ -67,11 +79,10 @@ void Task2() {
   } else {
     int consistency_integers_size = consistency_integers_ending + 1;
     int* consistency_integers = new int[consistency_integers_size];
-    for (int number = 0; number < consistency_integers_size; number++)
+    for (int number = 0; number != consistency_integers_size; ++number)
       consistency_integers[number] = number;
-    consistency_integers[1] = 0;
     EratosthenesSieve(2, consistency_integers_size, consistency_integers);
-    for (int number = 1; number < consistency_integers_size; number++)
+    for (int number = 1; number != consistency_integers_size; ++number)
       if (number == consistency_integers[number]) cout << number << ' ';
     cout << endl;
     delete[] consistency_integers;
@@ -83,27 +94,26 @@ void Task3() {
   int task_number = main_functions::IntegerInput();
   switch (task_number) {
     case 9: {
-      std::ifstream fout(main_functions::CreateTxtFile());
+      std::ifstream fout(main_functions::CreateTxtFile("task3"));
       if (fout.is_open()) {
         string file_content, number = "";
         while (getline(fout, file_content))
-          for (int i = 0; i < file_content.size(); i++)
+          for (size_t i = 0; i < file_content.size(); i++)
             cout << static_cast<int>(file_content[i]) << endl;
       } else {
         cout << "Program cannot open this txt file\n";
       }
     } break;
     case 32: {
-      std::ifstream fout(main_functions::CreateTxtFile());
-      cout
-          << "How many characters to shift the information by (enter positive "
-             "int for right shift or negative int for left shift)?\n";
+      std::ifstream fout(main_functions::CreateTxtFile("task3"));
+      cout << "How many characters to shift the information by (enter positive "
+              "int for right shift or negative int for left shift)?\n";
       int cipher_shift;
       cin >> cipher_shift;
       if (fout.is_open()) {
         string file_content, number = "";
         while (getline(fout, file_content)) {
-          for (int i = 0; i < file_content.size(); i++)
+          for (size_t i = 0; i != file_content.size(); ++i)
             file_content[i] = static_cast<int>(file_content[i]) + cipher_shift;
           cout << file_content << endl;
         }
@@ -147,7 +157,7 @@ void Task4() {
     cout << "Enter 2 integers: x and epsilon\n";
     double x = main_functions::DoubleInput(),
            epsilon = main_functions::DoubleInput();
-    if (x == kIncorrectUserData or epsilon == kIncorrectUserData) {
+    if (x == main_functions::kIncorrectUserData or epsilon == main_functions::kIncorrectUserData) {
       cout << "Incorrect data entered\n";
       return;
     }
@@ -176,7 +186,7 @@ void Task4() {
     int x = 1, y = 1, z = 1;
     for (int i = 1; i < kASize; i++) {
       a[i] = main_functions::IntegerInput();
-      if (a[i] == kIncorrectUserData) {
+      if (a[i] == main_functions::kIncorrectUserData) {
         cout << "Incorrect data entered\n";
         return;
       }
@@ -294,7 +304,7 @@ void Task5() {
       const int kFilesCount = 2;
       std::ofstream fin("C.txt");
       for (int file_number = 0; file_number < kFilesCount; file_number++) {
-        std::ifstream fout(main_functions::CreateTxtFile());
+        std::ifstream fout(main_functions::CreateTxtFile("task5"));
         if (fout.is_open() and fin.is_open()) {
           const int kArraySize = 1000;
           int* array = new int[kArraySize];
@@ -367,11 +377,10 @@ void Task5() {
         }
       }
       for (int i = 1; i < kRowsCount; i++) {
-        cout
-            << "Enter " << olympic_results[i][1]
-            << " amount of golden medals, silver medals, bronze medals (3 "
-               "integers "
-               "required)\n";
+        cout << "Enter " << olympic_results[i][1]
+             << " amount of golden medals, silver medals, bronze medals (3 "
+                "integers "
+                "required)\n";
         int golden_and_silver_medals_count = 0;
         for (int j = 2; j < kColumnsCount - 2; j++) {
           int temp = main_functions::IntegerInput();
@@ -448,7 +457,8 @@ void Task5() {
 }
 }  // namespace
 
-namespace practice5 {
+namespace procedural_programming {
+
 void Practice5Run() {
   int command = 1;
   while (command != 0) {
@@ -470,4 +480,4 @@ void Practice5Run() {
       cout << "Wrong command.\n";
   }
 }
-}  // namespace practice5
+}  // namespace procedural_programming

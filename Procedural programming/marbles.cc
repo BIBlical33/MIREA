@@ -1,28 +1,37 @@
 ﻿#include "marbles.h"
 
-#include "main.h"
+#include <algorithm>
+#include <numeric>
 
-namespace marbles {
+#include "main_functions.h"
+
+namespace procedural_programming {
 
 void MarblesRun() {
-  cout << "Enter amount of marbles (positive int required)\n";
-  int marbles_amount = main_functions::IntegerInput();
-  if (marbles_amount >= 2) {
+  std::cout << "Enter amount of marbles (positive int required)\n";
+
+  if (int marbles_amount = main_functions::IntegerInput();
+      marbles_amount >= 2) {
     int* marbles = new int[marbles_amount];
+
     std::iota(marbles, marbles + marbles_amount, 1);
+
     int amount_of_coincidences = 0;
+
     do
-      for (int i = 0; i < marbles_amount; i++)
+      for (int i = 0; i != marbles_amount; ++i)
         if (marbles[i] == i + 1) {
           amount_of_coincidences++;
           break;
         }
     while (std::next_permutation(marbles, marbles + marbles_amount));
-    cout << amount_of_coincidences << endl;
+
+    std::cout << amount_of_coincidences << std::endl;
+
     delete[] marbles;
   } else {
-    cout << marbles_amount << "Incorrect data entered\n";
+    std::cout << marbles_amount << "Incorrect data entered\n";
   }
 }
 
-}  // namespace marbles
+}  // namespace procedural_programming
