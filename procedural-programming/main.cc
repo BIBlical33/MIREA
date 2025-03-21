@@ -1,5 +1,7 @@
-#include "main_functions.h"
+#include <iostream>
+#include <string>
 
+#include "main_functions.h"
 #include "marbles.h"
 #include "practice4.h"
 #include "practice5.h"
@@ -7,13 +9,13 @@
 
 int main() {
   std::cout << "Greetings. This console app was written by Ilya Kramarenko, "
-          "IVBO-13-23.\n";
+               "IVBO-13-23.\n";
 
   std::string command = "initializing";
 
   while (command != "break!") {
     std::cout << "Enter name of practice separate line or '0' for exit. For "
-            "instance, practice4 or marbles\n";
+                 "instance, practice4 or marbles\n";
     std::cin >> command;
 
     if (command == "practice4")

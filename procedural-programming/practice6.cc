@@ -1,8 +1,11 @@
 #include "practice6.h"
 
+#include <algorithm>
 #include <cmath>
 #include <fstream>
+#include <iostream>
 #include <limits>
+#include <string>
 
 #include "main_functions.h"
 
@@ -122,6 +125,7 @@ int* findLCS(const int* x, int m, const int* y, int n, int& lcsLength) {
   lcsLength = dp[m][n];
   int* lcs = new int[lcsLength];
   int i = m, j = n, index = lcsLength - 1;
+
   while (i > 0 && j > 0) {
     if (x[i - 1] == y[j - 1]) {
       lcs[index] = x[i - 1];
@@ -134,9 +138,11 @@ int* findLCS(const int* x, int m, const int* y, int n, int& lcsLength) {
       j--;
     }
   }
-  for (int i = 0; i <= m; ++i) {
+
+  for (i = 0; i <= m; ++i) {
     delete[] dp[i];
   }
+
   delete[] dp;
   return lcs;
 }

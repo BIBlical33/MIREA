@@ -67,4 +67,16 @@ void Practice5() {
 
 }  // namespace
 
-int main() {}
+int main() {
+  enum Practices{ kPractice2, kPractice5 };
+  
+  const int kCurrentFunction = kPractice5; 
+  switch (kCurrentFunction) {
+    case kPractice2:
+      Practice2();
+    case kPractice5:
+      Practice5();
+    default:
+      break;
+  }
+}

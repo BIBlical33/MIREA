@@ -2,7 +2,10 @@
 
 #include <cmath>
 #include <fstream>
+#include <iostream>
 #include <limits>
+#include <string>
+#include <utility>
 
 #include "main_functions.h"
 
@@ -114,7 +117,8 @@ void Task3() {
         string file_content, number = "";
         while (getline(fout, file_content)) {
           for (size_t i = 0; i != file_content.size(); ++i)
-            file_content[i] = static_cast<int>(file_content[i]) + cipher_shift;
+            file_content[i] = static_cast<char>(
+                static_cast<int>(file_content[i]) + cipher_shift);
           cout << file_content << endl;
         }
       } else {
@@ -137,7 +141,7 @@ double* SetAConsistency(double* a, int n, const int kAConsistensySize,
       double* temp_array = new double[new_a_size];
       for (int i = 1; i < new_a_size; i++) temp_array[i] = a[i];
       delete[] a;
-      double* a = new double[new_a_size];
+      a = new double[new_a_size];
       for (int i = 1; i < new_a_size; i++) a[i] = temp_array[i];
       a[0] = new_a_size;
       delete[] temp_array;
@@ -157,7 +161,8 @@ void Task4() {
     cout << "Enter 2 integers: x and epsilon\n";
     double x = main_functions::DoubleInput(),
            epsilon = main_functions::DoubleInput();
-    if (x == main_functions::kIncorrectUserData or epsilon == main_functions::kIncorrectUserData) {
+    if (x == main_functions::kIncorrectUserData or
+        epsilon == main_functions::kIncorrectUserData) {
       cout << "Incorrect data entered\n";
       return;
     }

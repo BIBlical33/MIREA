@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Procedural programming", "Procedural programming\Procedural programming.vcxproj", "{899B4064-4E80-48D8-9539-BA620B2C84BC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "procedural-programming", "procedural-programming\procedural-programming.vcxproj", "{899B4064-4E80-48D8-9539-BA620B2C84BC}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Keyboard hook to paste into Avrora", "Keyboard hook\Keyboard hook to paste into Avrora.pyproj", "{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}"
 EndProject

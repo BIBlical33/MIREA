@@ -6,4 +6,5 @@ namespace procedural_programming {
 void Practice6Run();
 
 }
+
 #endif  // PRACTICE6_H_

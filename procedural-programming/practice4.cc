@@ -7,8 +7,10 @@
 #include <cmath>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
 #include <map>
 #include <numeric>
+#include <string>
 #include <vector>
 
 #include "main_functions.h"
@@ -431,14 +433,14 @@ void Task8() {
       C[vendor][2] += A[vendor][product] * B[product][0];
     }
 
-  cout << "Max revenue = " << std::max(C[0][0], std::max(C[1][0], C[2][0])) << " for "
-       << GetVendor(C, 0, 1)
-       << " vendor\nMin revenue = " << std::min(C[0][0], std::min(C[1][0], C[2][0]))
-       << " for " << GetVendor(C, 0, 0)
-       << " vendor\nMax commissions = " << std::max(C[0][1], std::max(C[1][1], C[2][1]))
-       << " for " << GetVendor(C, 1, 1)
-       << " vendor\nMin commissions = " << std::min(C[0][1], std::min(C[1][1], C[2][1]))
-       << " for " << GetVendor(C, 1, 0)
+  cout << "Max revenue = " << std::max(C[0][0], std::max(C[1][0], C[2][0]))
+       << " for " << GetVendor(C, 0, 1) << " vendor\nMin revenue = "
+       << std::min(C[0][0], std::min(C[1][0], C[2][0])) << " for "
+       << GetVendor(C, 0, 0) << " vendor\nMax commissions = "
+       << std::max(C[0][1], std::max(C[1][1], C[2][1])) << " for "
+       << GetVendor(C, 1, 1) << " vendor\nMin commissions = "
+       << std::min(C[0][1], std::min(C[1][1], C[2][1])) << " for "
+       << GetVendor(C, 1, 0)
        << " vendor\nTotal revenue = " << C[0][0] + C[1][0] + C[2][0]
        << "\nTotal commissions = " << C[1][1] + C[0][1] + C[2][1]
        << "\nTotal money = " << C[0][2] + C[1][2] + C[2][2] << endl;
@@ -447,8 +449,8 @@ void Task8() {
 void FillingMapsOfDigits(std::map<char, int>& dec_representation,
                          std::map<int, char>& search_digits_by_dec_value) {
   for (int digit = 0; digit != 10; ++digit) {
-    search_digits_by_dec_value[digit] = digit + '0';
-    dec_representation[digit + '0'] = digit;
+    search_digits_by_dec_value[digit] = static_cast<char>(digit) + '0';
+    dec_representation[static_cast<char>(digit) + '0'] = digit;
   }
 
   const int kA_ASCII_Index = 65, kF_ASCII_Index = 70;
