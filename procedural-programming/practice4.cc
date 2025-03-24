@@ -1,6 +1,4 @@
-﻿#include "practice4.h"
-
-#define NOMINMAX
+﻿#define NOMINMAX
 #include <Windows.h>
 
 #include <algorithm>
@@ -14,6 +12,7 @@
 #include <vector>
 
 #include "main_functions.h"
+#include "practices.h"
 
 namespace {
 

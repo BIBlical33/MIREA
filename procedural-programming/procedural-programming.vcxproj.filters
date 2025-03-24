@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main_functions.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,16 +35,7 @@
     <ClInclude Include="main_functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="marbles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="practice4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="practice5.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="practice6.h">
+    <ClInclude Include="practices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

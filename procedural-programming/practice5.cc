@@ -1,6 +1,4 @@
-﻿#include "practice5.h"
-
-#include <cmath>
+﻿#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <limits>
@@ -8,6 +6,7 @@
 #include <utility>
 
 #include "main_functions.h"
+#include "practices.h"
 
 namespace {
 
