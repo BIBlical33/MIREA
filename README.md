@@ -1,2 +1,2 @@
-# МИРЭА
-Некоторые из заданий дисциплин Института информационных технологий РТУ МИРЭА по направлению "09.03.01 Информатика и вычислительная техника".
+# MIREA
+Some of the tasks of the disciplines of the Institute of Information Technologies of MIREA - Russian Technological University.
