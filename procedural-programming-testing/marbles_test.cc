@@ -12,6 +12,8 @@
 #include "gtest/gtest.h"
 #include "include/practices.h"
 
+namespace {
+
 using procedural_programming::Marbles;
 
 TEST(MarblesTest, HandlesCorrectInput) {
@@ -33,3 +35,5 @@ TEST(MarblesTest, HandlesIncorrectInput) {
   EXPECT_THROW(Marbles(20), std::invalid_argument);
   EXPECT_THROW(Marbles(1000), std::invalid_argument);
 }
+
+}  // namespace
