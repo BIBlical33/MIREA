@@ -1,4 +1,7 @@
+#if 0
+
 #include <algorithm>
+#include <array>
 #include <ctime>
 #include <format>
 #include <regex>
@@ -8,15 +11,9 @@
 
 namespace {
 
-void Practice2() {
-  size_t n = main_functions::IntegerInput();
-
-  if (n < 1 or n > 100) {
-    std::cerr << "Incorrect input";
-    return;
-  }
-
+void Practice2(size_t n) {
   std::vector<int> array;
+  array.reserve(n);
 
   for (size_t i = 0; i != n; ++i)
     array.push_back(main_functions::IntegerInput());
@@ -32,11 +29,7 @@ void Practice2() {
   for (int i = 0; i < k; ++i) array.insert(array.begin(), *min_it);
 }
 
-void Practice5() {
-  std::string text;
-
-  std::getline(std::cin, text);
-
+void Practice5(std::string text) {
   std::regex pattern{
       R"([ \.,;,\-\"\\?!\(\)](\d+)|^(\d+)[ \.,;,\-\"\\?!\(\)]|[ \.,;,\-\"\\?!\(\)](\d+)$|^(\d+)$)"};
   std::smatch match;
@@ -67,16 +60,4 @@ void Practice5() {
 
 }  // namespace
 
-int main() {
-  enum Practices{ kPractice2, kPractice5 };
-  
-  const int kCurrentFunction = kPractice5; 
-  switch (kCurrentFunction) {
-    case kPractice2:
-      Practice2();
-    case kPractice5:
-      Practice5();
-    default:
-      break;
-  }
-}
+#endif

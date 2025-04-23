@@ -1,134 +1,150 @@
-﻿#include <cmath>
+﻿// Copyright 2025, github.com/BIBlical33
+//
+// Solving Practice5 tasks.
+// Task descriptions (in Russian):
+// https://drive.google.com/drive/folders/1WK_ulsyjzy_g6WYER9h5GWO-sKLsl-Zm?usp=sharing
+//
+// License: GNU General Public License v3.0
+// See: https://www.gnu.org/licenses/gpl-3.0.html
+
+#include <cassert>
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <limits>
+#include <numeric>
+#include <stdexcept>
 #include <string>
 #include <utility>
+#include <vector>
 
-#include "main_functions.h"
-#include "practices.h"
-
-namespace {
+#include "include/main_functions.h"
+#include "include/practices.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 
-int EuclideanAlgorithmByDivision(int first_number, int second_number) {
-  if (first_number != 0 and second_number != 0) {
-    if (first_number > second_number)
-      first_number %= second_number;
-    else
-      second_number %= first_number;
-    return EuclideanAlgorithmByDivision(first_number, second_number);
-  } else {
+namespace {
+
+int EuclideanAlgorithmByDivision(int first_number,
+                                           int second_number) {
+  if (first_number == 0 or second_number == 0)
     return first_number + second_number;
-  }
+
+  if (first_number > second_number)
+    first_number %= second_number;
+  else
+    second_number %= first_number;
+
+  return EuclideanAlgorithmByDivision(first_number, second_number);
 }
 
-int EuclideanAlgorithmBySubtraction(int first_number, int second_number) {
-  if (first_number != second_number) {
-    if (first_number > second_number)
-      first_number -= second_number;
-    else
-      second_number -= first_number;
-    return EuclideanAlgorithmByDivision(first_number, second_number);
-  } else {
-    return first_number;
-  }
+int EuclideanAlgorithmBySubtraction(int first_number,
+                                              int second_number) {
+  if (first_number == 0 or second_number == 0)
+    return first_number + second_number;
+
+  if (first_number == second_number) return first_number;
+
+  if (first_number > second_number)
+    first_number -= second_number;
+  else
+    second_number -= first_number;
+
+  return EuclideanAlgorithmBySubtraction(first_number, second_number);
 }
 
-void Task1() {
-  cout << "Enter two positive integers\n";
-  int first_number = main_functions::IntegerInput(),
-      second_number = main_functions::IntegerInput();
-  if (first_number < 1 or second_number < 1) {
-    cout << "Incorrect data entered\n";
+void ProcessingTextFilesSubtask9() {
+  std::ifstream fout(procedural_programming::CreateTxtFile("task3"));
+  if (not fout.is_open()) {
+    std::cerr << "Program cannot open this txt file\n";
     return;
   }
-  int greatest_common_divisor =
-      EuclideanAlgorithmByDivision(first_number, second_number);
-  if (greatest_common_divisor ==
-      EuclideanAlgorithmBySubtraction(first_number, second_number))
-    cout << "Their reatest common divisor is " << greatest_common_divisor
-         << endl;
-  else
-    cout << "Something went wrong\n";
+
+  string file_content, number = "";
+  while (getline(fout, file_content))
+    for (size_t i = 0; i < file_content.size(); ++i)
+      cout << static_cast<int>(file_content[i]) << endl;
+
+  fout.close();
 }
 
-int* EratosthenesSieve(int i, int consistency_integers_size,
-                       int* consistency_integers) {
-  while (i < consistency_integers_size) {
-    if (consistency_integers[i] != 0) {
+void ProcessingTextFilesSubtask32() {
+  std::ifstream fout(procedural_programming::CreateTxtFile("task3"));
+  int cipher_shift;
+  cin >> cipher_shift;
+  if (not fout.is_open()) {
+    std::cerr << "Program cannot open this txt file\n";
+    return;
+  }
+
+  string file_content, number = "";
+  while (getline(fout, file_content)) {
+    for (char character : file_content)
+      character = static_cast<char>(static_cast<int>(character) +
+                                    cipher_shift % static_cast<int>(character));
+    cout << file_content << endl;
+  }
+
+  fout.close();
+}
+
+}  // namespace
+
+namespace procedural_programming::practice5 {
+
+int EuclideanAlgorithm(int first_number, int second_number) {
+  int greatest_common_divisor =
+      EuclideanAlgorithmByDivision(first_number, second_number);
+  assert(greatest_common_divisor ==
+         EuclideanAlgorithmBySubtraction(first_number, second_number));
+  assert(greatest_common_divisor == std::gcd(first_number, second_number));
+  return greatest_common_divisor;
+}
+
+void EratosthenesSieve(int last_number) {
+  if (last_number < 2) throw std::invalid_argument("Incorrect argument");
+
+  std::vector<int> numbers(last_number - 1);
+  std::iota(numbers.begin(), numbers.end(), 2);
+
+  int i = 2;
+  while (i < numbers.size() / 2) {
+    if (numbers[i] != 0) {
       int j = i * 2;
-      while (j < consistency_integers_size) {
-        consistency_integers[j] = 0;
+      while (j < numbers.size()) {
+        numbers[j] = 0;
         j += i;
       }
     }
+
     i++;
   }
-  return consistency_integers;
 }
 
-void Task2() {
-  cout << "Enter positive integer value:\n";
-  int consistency_integers_ending = main_functions::IntegerInput();
-  if (consistency_integers_ending < 0) {
-    cout << "Incorrect data entered\n";
-    return;
-  } else {
-    int consistency_integers_size = consistency_integers_ending + 1;
-    int* consistency_integers = new int[consistency_integers_size];
-    for (int number = 0; number != consistency_integers_size; ++number)
-      consistency_integers[number] = number;
-    EratosthenesSieve(2, consistency_integers_size, consistency_integers);
-    for (int number = 1; number != consistency_integers_size; ++number)
-      if (number == consistency_integers[number]) cout << number << ' ';
-    cout << endl;
-    delete[] consistency_integers;
-  }
-}
+enum class ProcessingTextFilesSubtasks {
+  kSubtask9 = 9,
+  kSubtask32 = 32,
+  kWrong
+};
 
-void Task3() {
-  cout << "Enter task number: '9' or '32'\n";
-  int task_number = main_functions::IntegerInput();
-  switch (task_number) {
-    case 9: {
-      std::ifstream fout(main_functions::CreateTxtFile("task3"));
-      if (fout.is_open()) {
-        string file_content, number = "";
-        while (getline(fout, file_content))
-          for (size_t i = 0; i < file_content.size(); i++)
-            cout << static_cast<int>(file_content[i]) << endl;
-      } else {
-        cout << "Program cannot open this txt file\n";
-      }
+void ProcessingTextFiles(ProcessingTextFilesSubtasks subtask_number) {
+  switch (subtask_number) {
+    case ProcessingTextFilesSubtasks::kSubtask9: {
+      ProcessingTextFilesSubtask9();
     } break;
-    case 32: {
-      std::ifstream fout(main_functions::CreateTxtFile("task3"));
-      cout << "How many characters to shift the information by (enter positive "
-              "int for right shift or negative int for left shift)?\n";
-      int cipher_shift;
-      cin >> cipher_shift;
-      if (fout.is_open()) {
-        string file_content, number = "";
-        while (getline(fout, file_content)) {
-          for (size_t i = 0; i != file_content.size(); ++i)
-            file_content[i] = static_cast<char>(
-                static_cast<int>(file_content[i]) + cipher_shift);
-          cout << file_content << endl;
-        }
-      } else {
-        cout << "Program cannot open this txt file\n";
-      }
+    case ProcessingTextFilesSubtasks::kSubtask32: {
+      ProcessingTextFilesSubtask32();
     } break;
     default:
       cout << "Incorrect task number\n";
   }
 }
 
+// It's an old code that I have no desire to improve.
+#if 0
 double* SetAConsistency(double* a, int n, const int kAConsistensySize,
                         double x) {
   if (n < kAConsistensySize) {
@@ -459,29 +475,6 @@ void Task5() {
       cout << "Incorrect task number\n";
   }
 }
-}  // namespace
+#endif
 
-namespace procedural_programming {
-
-void Practice5Run() {
-  int command = 1;
-  while (command != 0) {
-    cout << "Enter task number separate digit or '0' for exit\n";
-    command = main_functions::IntegerInput();
-    if (command == 1)
-      Task1();
-    else if (command == 2)
-      Task2();
-    else if (command == 3)
-      Task3();
-    else if (command == 4)
-      Task4();
-    else if (command == 5)
-      Task5();
-    else if (command == 0)
-      break;
-    else
-      cout << "Wrong command.\n";
-  }
-}
-}  // namespace procedural_programming
+}  // namespace procedural_programming::practice5

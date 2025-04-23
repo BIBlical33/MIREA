@@ -10,7 +10,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Keyboard hook to paste into Avrora</Name>
+    <Name>keyboard-hook</Name>
     <RootNamespace>Keyboard_hook</RootNamespace>
     <IsWindowsApplication>True</IsWindowsApplication>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>

@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main_functions.cc">
+    <ClCompile Include="src\main_functions.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="marbles.cc">
+    <ClCompile Include="src\marbles.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="practice4.cc">
+    <ClCompile Include="src\practice4.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="practice5.cc">
+    <ClCompile Include="src\practice5.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="practice6.cc">
+    <ClCompile Include="src\practice6.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main_functions.h">
+    <ClInclude Include="include\main_functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="practices.h">
+    <ClInclude Include="include\practices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

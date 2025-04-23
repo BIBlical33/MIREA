@@ -1,3 +1,15 @@
+// Copyright 2025, github.com/BIBlical33
+//
+// Solving Practice6 tasks.
+// Task descriptions (in Russian):
+// https://drive.google.com/drive/folders/1WK_ulsyjzy_g6WYER9h5GWO-sKLsl-Zm?usp=sharing
+//
+// License: GNU General Public License v3.0
+// See: https://www.gnu.org/licenses/gpl-3.0.html
+
+// It's an old code that I have no desire to improve.
+#if 0
+
 #include <algorithm>
 #include <cmath>
 #include <fstream>
@@ -5,8 +17,8 @@
 #include <limits>
 #include <string>
 
-#include "main_functions.h"
-#include "practices.h"
+#include "include/main_functions.h"
+#include "include/practices.h"
 
 namespace {
 
@@ -15,18 +27,12 @@ using std::cout;
 using std::endl;
 using std::string;
 
-void Task60() {
-  cout << "Enter n (positive int required)\n";
-
-  int n = main_functions::IntegerInput();
-
-  if (n < 1) {
-    cout << "Incorrect data entered\n";
-    return;
-  }
+void Task60(int n) {
+  if (n < 1)
+    throw std::invalid_argument("Incorrect matrix size: " + std::to_string(n));
 
   int **square_matrix = new int *[n], side_diagonal_j = n - 1,
-      desired_min_element = -1 - main_functions::kIncorrectUserData;
+      desired_min_element = std::numeric_limits<int>::max();
 
   for (int i = 0; i < n; i++) {
     cout << "Enter " << n << " numbers\n";
@@ -259,26 +265,6 @@ void Task89() {
 }
 }  // namespace
 
-namespace procedural_programming {
-void Practice6Run() {
-  int command = 1;
-  while (command != 0) {
-    cout << "Enter task number separate digit or '0' for exit\n";
-    command = main_functions::IntegerInput();
-    if (command == 60)
-      Task60();
-    else if (command == 74)
-      Task74();
-    else if (command == 82)
-      Task82();
-    else if (command == 85)
-      Task85();
-    else if (command == 89)
-      Task89();
-    else if (command == 0)
-      break;
-    else
-      cout << "Wrong command.\n";
-  }
-}
 }  // namespace procedural_programming
+
+#endif

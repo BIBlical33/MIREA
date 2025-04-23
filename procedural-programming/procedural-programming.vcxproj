@@ -19,15 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main_functions.cc" />
-    <ClCompile Include="marbles.cc" />
-    <ClCompile Include="practice4.cc" />
-    <ClCompile Include="practice5.cc" />
-    <ClCompile Include="practice6.cc" />
+    <ClCompile Include="src\main_functions.cc" />
+    <ClCompile Include="src\marbles.cc" />
+    <ClCompile Include="src\practice4.cc" />
+    <ClCompile Include="src\practice5.cc" />
+    <ClCompile Include="src\practice6.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main_functions.h" />
-    <ClInclude Include="practices.h" />
+    <ClInclude Include="include\main_functions.h" />
+    <ClInclude Include="include\practices.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

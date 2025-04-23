@@ -1,9 +1,17 @@
+# Copyright 2025, github.com/BIBlical33
+#
+# Keyboard hook to past into Aurora
+#
+# Aurora is a dumb program in which insertion is prohibited,
+# and where object-oriented programming tasks were solved in MIREA
+#
+# License: GNU General Public License v3.0
+# See: https://www.gnu.org/licenses/gpl-3.0.html
+
 import time
 import pyautogui
 
-
 time.sleep(5)
-
 
 with open("hook.cc", "r") as file:
     for char in file.read():
