@@ -11,6 +11,8 @@
 
 #include "include/practices.h"
 
+namespace {
+
 using procedural_programming::practice5::EuclideanAlgorithm;
 
 TEST(EuclideanAlgorithmTest, CommonCases) {
@@ -38,3 +40,5 @@ TEST(EuclideanAlgorithmTest, OneNumberIsZero) {
 TEST(EuclideanAlgorithmTest, BothNumbersZero) {
   EXPECT_EQ(EuclideanAlgorithm(0, 0), 0);
 }
+
+}  // namespace
