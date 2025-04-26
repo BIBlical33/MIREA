@@ -7,8 +7,8 @@
 // License: GNU General Public License v3.0
 // See: https://www.gnu.org/licenses/gpl-3.0.html
 
-#ifndef PROCEDURAL_PROGRAMMING_PRACTICES_H_
-#define PROCEDURAL_PROGRAMMING_PRACTICES_H_
+#ifndef PROCEDURAL_PROGRAMMING_INCLUDE_PRACTICES_H_
+#define PROCEDURAL_PROGRAMMING_INCLUDE_PRACTICES_H_
 
 #include <string>
 #include <variant>
@@ -70,6 +70,8 @@ namespace procedural_programming::practice5 {
 
 int EuclideanAlgorithm(int first_number, int second_number);
 
+std::vector<int> EratosthenesSieve(int last_number);
+
 }
 
-#endif  // PROCEDURAL_PROGRAMMING_PRACTICES_H_
+#endif  // PROCEDURAL_PROGRAMMING_INCLUDE_PRACTICES_H_

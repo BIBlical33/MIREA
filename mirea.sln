@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "procedural-programming", "p
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "keyboard-hook", "keyboard-hook\keyboard-hook.pyproj", "{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithmic bases of data processing (practices)", "Algorithmic bases of data processing (practices) FOR DELETING\Algorithmic bases of data processing (practices).vcxproj", "{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "procedural-programming-testing", "procedural-programming-testing\procedural-programming-testing.vcxproj", "{48358C88-E70C-40AF-ACB6-66268A58C02A}"
 EndProject
 Global
@@ -39,18 +37,6 @@ Global
 		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|x64.ActiveCfg = Release|Any CPU
 		{8CE8607F-D0BC-41A2-8E10-A5A14B78DE4B}.Release|x86.ActiveCfg = Release|Any CPU
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|Any CPU.Build.0 = Debug|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x64.ActiveCfg = Debug|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x64.Build.0 = Debug|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x86.ActiveCfg = Debug|Win32
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Debug|x86.Build.0 = Debug|Win32
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|Any CPU.ActiveCfg = Release|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|Any CPU.Build.0 = Release|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x64.ActiveCfg = Release|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x64.Build.0 = Release|x64
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x86.ActiveCfg = Release|Win32
-		{FB64D98E-A09C-47BD-BBB4-DFFAAC4D68C9}.Release|x86.Build.0 = Release|Win32
 		{48358C88-E70C-40AF-ACB6-66268A58C02A}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{48358C88-E70C-40AF-ACB6-66268A58C02A}.Debug|Any CPU.Build.0 = Debug|x64
 		{48358C88-E70C-40AF-ACB6-66268A58C02A}.Debug|x64.ActiveCfg = Debug|x64

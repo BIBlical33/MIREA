@@ -10,8 +10,8 @@
 #include <algorithm>
 #include <numeric>
 #include <vector>
+#include <stdexcept>
 
-#include "include/main_functions.h"
 #include "include/practices.h"
 
 namespace procedural_programming {

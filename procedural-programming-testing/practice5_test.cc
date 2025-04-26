@@ -1,6 +1,6 @@
 // Copyright 2025, github.com/BIBlical33
 //
-// Testing Practice4 tasks.
+// Testing Practice5 tasks.
 // Task descriptions (in Russian):
 // https://drive.google.com/drive/folders/1WK_ulsyjzy_g6WYER9h5GWO-sKLsl-Zm?usp=sharing
 //
@@ -9,10 +9,13 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
+
 #include "include/practices.h"
 
 namespace {
 
+using procedural_programming::practice5::EratosthenesSieve;
 using procedural_programming::practice5::EuclideanAlgorithm;
 
 TEST(EuclideanAlgorithmTest, CommonCases) {
@@ -39,6 +42,26 @@ TEST(EuclideanAlgorithmTest, OneNumberIsZero) {
 
 TEST(EuclideanAlgorithmTest, BothNumbersZero) {
   EXPECT_EQ(EuclideanAlgorithm(0, 0), 0);
+}
+
+TEST(EratosthenesSieveTest, SmallestPrime) {
+  std::vector expected{2};
+  EXPECT_TRUE(std::ranges::equal(expected, EratosthenesSieve(2)));
+}
+
+TEST(EratosthenesSieveTest, ThrowsOnZeroOrOne) {
+  EXPECT_THROW(EratosthenesSieve(0), std::invalid_argument);
+  EXPECT_THROW(EratosthenesSieve(1), std::invalid_argument);
+}
+
+TEST(EratosthenesSieveTest, PrimeAtEnd) {
+  std::vector expected{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+  EXPECT_TRUE(std::ranges::equal(expected, EratosthenesSieve(31)));
+}
+
+TEST(EratosthenesSieveTest, NonPrimeAtEnd) {
+  std::vector expected{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
+  EXPECT_TRUE(std::ranges::equal(expected, EratosthenesSieve(50)));
 }
 
 }  // namespace

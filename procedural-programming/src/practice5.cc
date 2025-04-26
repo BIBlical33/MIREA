@@ -18,7 +18,7 @@
 #include <utility>
 #include <vector>
 
-#include "include/main_functions.h"
+#include "include/create_txt_file.h"
 #include "include/practices.h"
 
 using std::cin;
@@ -28,8 +28,7 @@ using std::string;
 
 namespace {
 
-int EuclideanAlgorithmByDivision(int first_number,
-                                           int second_number) {
+int EuclideanAlgorithmByDivision(int first_number, int second_number) {
   if (first_number == 0 or second_number == 0)
     return first_number + second_number;
 
@@ -41,8 +40,7 @@ int EuclideanAlgorithmByDivision(int first_number,
   return EuclideanAlgorithmByDivision(first_number, second_number);
 }
 
-int EuclideanAlgorithmBySubtraction(int first_number,
-                                              int second_number) {
+int EuclideanAlgorithmBySubtraction(int first_number, int second_number) {
   if (first_number == 0 or second_number == 0)
     return first_number + second_number;
 
@@ -56,6 +54,7 @@ int EuclideanAlgorithmBySubtraction(int first_number,
   return EuclideanAlgorithmBySubtraction(first_number, second_number);
 }
 
+// Task condition: Convert text to a column of ASCII codes
 void ProcessingTextFilesSubtask9() {
   std::ifstream fout(procedural_programming::CreateTxtFile("task3"));
   if (not fout.is_open()) {
@@ -71,6 +70,7 @@ void ProcessingTextFilesSubtask9() {
   fout.close();
 }
 
+// Task condition: Encrypting a text file by shifting alphabetically
 void ProcessingTextFilesSubtask32() {
   std::ifstream fout(procedural_programming::CreateTxtFile("task3"));
   int cipher_shift;
@@ -95,6 +95,8 @@ void ProcessingTextFilesSubtask32() {
 
 namespace procedural_programming::practice5 {
 
+// Task condition: find the greatest common divisor of two numbers
+// by division and subtraction
 int EuclideanAlgorithm(int first_number, int second_number) {
   int greatest_common_divisor =
       EuclideanAlgorithmByDivision(first_number, second_number);
@@ -104,24 +106,27 @@ int EuclideanAlgorithm(int first_number, int second_number) {
   return greatest_common_divisor;
 }
 
-void EratosthenesSieve(int last_number) {
+// Task condition: Find all prime numbers in the range from 2 to last_number
+std::vector<int> EratosthenesSieve(int last_number) {
   if (last_number < 2) throw std::invalid_argument("Incorrect argument");
 
   std::vector<int> numbers(last_number - 1);
   std::iota(numbers.begin(), numbers.end(), 2);
 
-  int i = 2;
-  while (i < numbers.size() / 2) {
+  for (size_t i = 0, iend = numbers.size() / 2; i != iend; ++i)
     if (numbers[i] != 0) {
-      int j = i * 2;
+      size_t j = i + numbers[i];
       while (j < numbers.size()) {
         numbers[j] = 0;
-        j += i;
+        j += numbers[i];
       }
     }
 
-    i++;
-  }
+  std::vector<int> prime_dividers;
+  for (int& number : numbers)
+    if (number != 0) prime_dividers.push_back(number);
+
+  return prime_dividers;
 }
 
 enum class ProcessingTextFilesSubtasks {

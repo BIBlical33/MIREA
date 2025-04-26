@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main_functions.cc">
+    <ClCompile Include="src\create_txt_file.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\marbles.cc">
@@ -32,7 +32,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\main_functions.h">
+    <ClInclude Include="include\create_txt_file.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\practices.h">

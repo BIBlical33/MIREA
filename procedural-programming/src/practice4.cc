@@ -28,7 +28,7 @@
 #include <variant>
 #include <vector>
 
-#include "include/main_functions.h"
+#include "include/create_txt_file.h"
 #include "include/practices.h"
 
 using std::cin;
@@ -177,6 +177,8 @@ string DemicalToNewBase(
 
 namespace procedural_programming::practice4 {
 
+// Task condition: Create a file, write numbers into it, close it, then reopen
+// the file and find the sum of the numbers
 double File() {
   std::ifstream fout(procedural_programming::CreateTxtFile("task1"));
 
@@ -192,6 +194,7 @@ double File() {
   return result;
 }
 
+// Task condition: Determine the sign of the number
 int Sign(double x) noexcept {
   if (x > 0)
     return 1;
@@ -201,6 +204,8 @@ int Sign(double x) noexcept {
     return -1;
 }
 
+// Task condition: Calculate the areas of a rectangle, triangle, circle, using
+// subfunctions
 double GeometricFigures(
     FigureType figure_type,
     const std::variant<TriangleParams, RectangleParams, CircleParams>& params) {
@@ -225,6 +230,9 @@ double GeometricFigures(
   }
 }
 
+// Task condition: In 1912, the American flag of ‘Former Glory’ had 48 stars
+// (one per each state) and 13 stripes (one per colony). Print the 1912 Former
+// Glory
 void FormerGlory() {
   HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
   SetConsoleTextAttribute(handle, FOREGROUND_RED);
@@ -246,6 +254,7 @@ void FormerGlory() {
                                       FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 }
 
+// Task condition: Print the graph of the function y = sin x
 void SineWave() {
   cout << "Open the window in full screen mode\n\ny = sin(x)\n\n";
 
@@ -286,10 +295,13 @@ void SineWave() {
         cout << ' ';
       }
     }
+
     cout << endl;
   }
 }
 
+// Task condition: Decode the Roman notation of a number consisting of any
+// number of digits
 int AutomaticRecognizer(const std::string& roman_number) {
   static const std::unordered_map<char, int> roman_digits = {
       {'I', 1},   {'V', 5},   {'X', 10},  {'L', 50},
@@ -316,6 +328,8 @@ int AutomaticRecognizer(const std::string& roman_number) {
   return dec_number;
 }
 
+// Task condition: Construct a pseudo-random number generator using the
+// recurrence formulas via 2 variants
 std::vector<int> PseudorandomNumberGenerator(
     ConsistencyVariant consistency_variant, size_t consistency_length) {
   std::vector<int> s;
@@ -346,6 +360,17 @@ std::vector<int> PseudorandomNumberGenerator(
   return s;
 }
 
+/* Task condition:
+Determine:
+1) which seller received the most money from the sale, which one received
+the least;
+2) which one received the highest commission, which one received the lowest;
+3) what is the total amount of money received for the sold goods
+commission, which received the highest, which received the lowest;
+4) how much commission did the sellers receive in total;
+5) what is the total amount of money that passed through the hands of
+the sellers?
+*/
 void MatrixMultiplication() {
   const constexpr double A[3][4] = {{5, 2, 0, 10}, {3, 5, 2, 5}, {20, 0, 0, 0}};
 
@@ -375,7 +400,8 @@ void MatrixMultiplication() {
        << "\nTotal money = " << C[0][2] + C[1][2] + C[2][2] << endl;
 }
 
-string NumberSystems(string number, const int old_base, const int new_base) {
+// Task condition: Number systems converter
+string NumberSystems(string number, int old_base, int new_base) {
   if (old_base < 2)
     throw std::invalid_argument("Incorrect number system: " +
                                 std::to_string(old_base));
@@ -383,14 +409,11 @@ string NumberSystems(string number, const int old_base, const int new_base) {
 
     throw std::invalid_argument("Incorrect number system: " +
                                 std::to_string(new_base));
-  if (old_base > 16 || new_base > 16)
+  if (old_base > 16 or new_base > 16)
     throw std::invalid_argument("Supports bases <= 16 only");
 
-  static auto maps_of_digits = FillingMapsOfDigits();
-  static const std::unordered_map<char, int> dec_representation =
-      maps_of_digits.first;
-  static const std::unordered_map<int, char> search_digits_by_dec_value =
-      maps_of_digits.second;
+  static auto [dec_representation, search_digits_by_dec_value] =
+      FillingMapsOfDigits();
 
   // Check for incorrect symbols in number
   for (char ch : number) {
