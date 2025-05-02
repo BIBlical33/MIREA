@@ -9,8 +9,8 @@
 
 #include <algorithm>
 #include <numeric>
-#include <vector>
 #include <stdexcept>
+#include <vector>
 
 #include "include/practices.h"
 

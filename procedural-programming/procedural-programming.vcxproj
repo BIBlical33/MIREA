@@ -26,7 +26,7 @@
     <ClCompile Include="src\practice6.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\create_txt_file.h" />
+    <ClInclude Include="src\create_txt_file.h" />
     <ClInclude Include="include\practices.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
